@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1751302080238,
@@ -20,6 +20,14 @@
                 {
                     "date": 1751346267362,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -472,9 +472,22 @@\n                 <div class=\"step-content\">\r\n                     <strong>Нажмите кнопку COPY</strong> для копирования в текущую программу.\r\n                 </div>\r\n             </div>\r\n+            <h3>Как скопировать цикл</h3>\r\n             <div class=\"step\">\r\n+                <div class=\"step-number\">1</div>\r\n+                <div class=\"step-content\">\r\n+                    <strong>Выберите номер цикла</strong> в спинере указав цикл источник\r\n+                </div>\r\n+            </div>\r\n+            <div class=\"step\">\r\n+                <div class=\"step-number\">2</div>\r\n+                <div class=\"step-content\">\r\n+                    <strong>Нажмите кнопку COPY</strong> для копирования в текущий цикл.\r\n+                </div>\r\n+            </div>\r\n+            <div class=\"step\">\r\n                 <div class=\"step-number\">3</div>\r\n                 <div class=\"step-content\">\r\n                     <strong>Выберите параметры копирования:</strong>\r\n                     <ul>\r\n"
+                },
+                {
+                    "date": 1751346466052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -485,9 +485,9 @@\n                 <div class=\"step-content\">\r\n                     <strong>Нажмите кнопку COPY</strong> для копирования в текущий цикл.\r\n                 </div>\r\n             </div>\r\n-            <div class=\"step\">\r\n+            <!-- <div class=\"step\">\r\n                 <div class=\"step-number\">3</div>\r\n                 <div class=\"step-content\">\r\n                     <strong>Выберите параметры копирования:</strong>\r\n                     <ul>\r\n@@ -502,9 +502,9 @@\n                 <div class=\"step-number\">4</div>\r\n                 <div class=\"step-content\">\r\n                     <strong>Нажмите кнопку \"Копировать\"</strong> для выполнения операции\r\n                 </div>\r\n-            </div>\r\n+            </div> -->\r\n             \r\n             <h3>Дополнительные возможности</h3>\r\n             <table>\r\n                 <tr>\r\n"
+                },
+                {
+                    "date": 1751346497935,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -504,9 +504,9 @@\n                     <strong>Нажмите кнопку \"Копировать\"</strong> для выполнения операции\r\n                 </div>\r\n             </div> -->\r\n             \r\n-            <h3>Дополнительные возможности</h3>\r\n+            <!-- <h3>Дополнительные возможности</h3>\r\n             <table>\r\n                 <tr>\r\n                     <th>Функция</th>\r\n                     <th>Описание</th>\r\n@@ -522,9 +522,9 @@\n                 <tr>\r\n                     <td>Создание шаблонов</td>\r\n                     <td>Сохранение часто используемых настроек как шаблонов</td>\r\n                 </tr>\r\n-            </table>\r\n+            </table> -->\r\n             \r\n             <div class=\"warning\">\r\n                 <p>При копировании в существующую программу все текущие данные будут перезаписаны!</p>\r\n             </div>\r\n"
                 }
             ],
             "date": 1751302080238,
