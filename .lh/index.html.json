@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1751302080238,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751345144457,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -442,9 +442,9 @@\n             </div>\r\n             <div class=\"step\">\r\n                 <div class=\"step-number\">4</div>\r\n                 <div class=\"step-content\">\r\n-                    <strong>Сохраните программу</strong>, нажав кнопку \"СОХРАНИТЬ ДАННЫЕ\"\r\n+                    <strong>Сохраните программу</strong>, нажав кнопку \"СОХРАНИТЬ ДАННЫЕ на вкладке SET\"\r\n                 </div>\r\n             </div>\r\n             \r\n             <div class=\"note\">\r\n"
+                },
+                {
+                    "date": 1751345565749,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -463,15 +463,15 @@\n             <h3>Как скопировать программу</h3>\r\n             <div class=\"step\">\r\n                 <div class=\"step-number\">1</div>\r\n                 <div class=\"step-content\">\r\n-                    <strong>Выберите исходную программу</strong> из выпадающего списка \"Программа-источник\"\r\n+                    <strong>Выберите номер программы</strong> в спинере указав программу источник\r\n                 </div>\r\n             </div>\r\n             <div class=\"step\">\r\n                 <div class=\"step-number\">2</div>\r\n                 <div class=\"step-content\">\r\n-                    <strong>Укажите целевую программу</strong> в поле \"Программа-приемник\" (от 0 до 49)\r\n+                    <strong>Нажмите кнопку COPY</strong> для копирования в текущую программу.\r\n                 </div>\r\n             </div>\r\n             <div class=\"step\">\r\n                 <div class=\"step-number\">3</div>\r\n"
                 }
             ],
             "date": 1751302080238,
