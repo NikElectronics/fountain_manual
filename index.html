@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,15 @@
     <title>управления фонтаном.</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
+            --primary-color: #2d2c50;
+            --secondary-color: #34db74;
             --accent-color: #e74c3c;
             --light-gray: #f5f7fa;
             --medium-gray: #e0e0e0;
             --dark-gray: #333;
             --white: #ffffff;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -24,26 +26,29 @@
             color: var(--dark-gray);
             background-color: var(--light-gray);
         }
+
         .sidebar {
             width: 280px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #4a6491 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #54b68a 100%);
             color: var(--white);
             padding: 25px 0;
             position: fixed;
             height: 100%;
             overflow-y: auto;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             z-index: 100;
             transition: transform 0.3s ease;
         }
+
         .sidebar h2 {
             text-align: center;
             padding: 0 20px 15px;
             margin: 0 0 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: 600;
             font-size: 1.4rem;
         }
+
         .sidebar a {
             display: block;
             color: #e0e0e0;
@@ -53,18 +58,21 @@
             font-size: 0.95rem;
             border-left: 3px solid transparent;
         }
+
         .sidebar a:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             color: var(--white);
             border-left: 3px solid var(--secondary-color);
             padding-left: 28px;
         }
+
         .content {
             margin-left: 280px;
             padding: 40px;
             width: calc(100% - 280px);
             max-width: 1200px;
         }
+
         h1 {
             color: var(--primary-color);
             border-bottom: 2px solid var(--secondary-color);
@@ -73,6 +81,7 @@
             font-weight: 700;
             font-size: 2.2rem;
         }
+
         h2 {
             color: var(--primary-color);
             margin-top: 50px;
@@ -81,25 +90,29 @@
             font-weight: 600;
             font-size: 1.8rem;
         }
+
         h3 {
             color: var(--secondary-color);
             margin-top: 30px;
             font-weight: 500;
             font-size: 1.4rem;
         }
+
         h4 {
             color: var(--primary-color);
             margin: 25px 0 15px;
             font-weight: 500;
             font-size: 1.2rem;
         }
+
         .section {
             margin-bottom: 50px;
             background: var(--white);
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
         }
+
         .note {
             background-color: #e7f4ff;
             border-left: 4px solid var(--secondary-color);
@@ -107,6 +120,7 @@
             margin: 25px 0;
             border-radius: 0 6px 6px 0;
         }
+
         .warning {
             background-color: #fff8e6;
             border-left: 4px solid #ffc107;
@@ -114,6 +128,7 @@
             margin: 25px 0;
             border-radius: 0 6px 6px 0;
         }
+
         .screenshot-container {
             text-align: center;
             margin: 30px 0;
@@ -122,50 +137,60 @@
             border-radius: 8px;
             border: 1px solid var(--medium-gray);
         }
+
         .screenshot {
             max-width: 100%;
             height: auto;
             border: 1px solid var(--medium-gray);
             border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+
         .caption {
             font-style: italic;
             color: #666;
             margin-top: 10px;
             font-size: 0.9em;
         }
+
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin: 25px 0;
         }
+
         .feature-box {
             background: var(--white);
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             border-left: 3px solid var(--secondary-color);
         }
+
         .feature-box h4 {
             margin-top: 0;
             color: var(--primary-color);
         }
-        ul, ol {
+
+        ul,
+        ol {
             padding-left: 25px;
         }
+
         li {
             margin-bottom: 10px;
             line-height: 1.5;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 25px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             font-size: 0.95em;
         }
+
         th {
             background-color: var(--primary-color);
             color: var(--white);
@@ -173,16 +198,20 @@
             text-align: left;
             font-weight: 500;
         }
+
         td {
             padding: 12px;
             border-bottom: 1px solid var(--medium-gray);
         }
+
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         tr:hover {
             background-color: #f1f5fb;
         }
+
         .contact {
             background-color: #f5f5f5;
             padding: 25px;
@@ -190,11 +219,13 @@
             margin-top: 40px;
             border-left: 4px solid var(--secondary-color);
         }
+
         .step {
             display: flex;
             margin-bottom: 15px;
             align-items: flex-start;
         }
+
         .step-number {
             background: var(--secondary-color);
             color: var(--white);
@@ -208,9 +239,11 @@
             flex-shrink: 0;
             font-weight: bold;
         }
+
         .step-content {
             flex: 1;
         }
+
         .btn {
             display: inline-block;
             padding: 8px 16px;
@@ -221,9 +254,11 @@
             margin: 5px 0;
             font-weight: 500;
         }
+
         .btn:hover {
             opacity: 0.9;
         }
+
         .license-box {
             background: #f9f9f9;
             padding: 20px;
@@ -231,6 +266,7 @@
             border: 1px solid #e0e0e0;
             margin: 20px 0;
         }
+
         .license-key {
             font-family: monospace;
             font-size: 1.2em;
@@ -241,7 +277,7 @@
             display: inline-block;
             margin: 10px 0;
         }
-        
+
         /* Мобильное меню */
         .menu-toggle {
             display: none;
@@ -257,7 +293,7 @@
             font-size: 16px;
             cursor: pointer;
         }
-        
+
         .menu-close {
             display: none;
             position: absolute;
@@ -272,16 +308,18 @@
             font-size: 16px;
             cursor: pointer;
         }
-        
+
         @media (max-width: 1024px) {
             .sidebar {
                 width: 240px;
             }
+
             .content {
                 margin-left: 240px;
                 padding: 30px;
             }
         }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -292,35 +330,36 @@
                 left: 0;
                 z-index: 999;
             }
-            
+
             .sidebar.active {
                 transform: translateX(0);
             }
-            
+
             .content {
                 margin-left: 0;
                 width: 100%;
                 padding: 25px;
                 padding-top: 70px;
             }
-            
+
             .feature-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .menu-toggle {
                 display: block;
             }
-            
+
             .menu-close {
                 display: block;
             }
         }
     </style>
 </head>
+
 <body>
     <button class="menu-toggle" id="menuToggle">☰ Меню</button>
-    
+
     <div class="sidebar" id="sidebar">
         <button class="menu-close" id="menuClose">✕</button>
         <h2>Меню инструкции</h2>
@@ -342,12 +381,12 @@
     <div class="content">
         <!-- Введение -->
         <div id="intro" class="section">
-            <h1>Инструкция  программы МОЙ ФОНТАН</h1>
+            <h1>Инструкция программы МОЙ ФОНТАН</h1>
             <!-- <div class="screenshot-container">
                 <img src="screenshots/01_main_interface.jpg" alt="Главный интерфейс программы" class="screenshot">
                 <div class="caption">Рис. 1 - Главный интерфейс программы управления фонтаном</div>
             </div> -->
-            
+
             <div class="feature-grid">
                 <div class="feature-box">
                     <h4>Основные возможности</h4>
@@ -377,7 +416,7 @@
                 <img src="screenshots/02_interface_overview.jpg" alt="Обзор интерфейса" class="screenshot">
                 <div class="caption">Рис. 2 - Обзор интерфейса программы</div>
             </div>
-            
+
             <h3>Структура интерфейса</h3>
             <table>
                 <tr>
@@ -415,12 +454,13 @@
                 <img src="screenshots/03_programming_page.jpg" alt="Страница программирования" class="screenshot">
                 <div class="caption">Рис. 3 - Страница программирования фонтана</div>
             </div>
-            
+
             <h3>Создание программы</h3>
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                    <strong>Выберите номер программы</strong> (от 0 до 49) укажите количество циклов и повторов (от 1 до 32)
+                    <strong>Выберите номер программы</strong> (от 0 до 49) укажите количество циклов и повторов (от 1 до
+                    32)
                 </div>
             </div>
             <div class="step">
@@ -428,9 +468,9 @@
                 <div class="step-content">
                     <strong>Настройте параметры каждого цикла:</strong>
                     <ul>
-                        <li>Частота для каждой форсунки (0-250 Гц)</li>
-                        <li>Время выполнения цикла (в десятых долях секунды)</li>
-                        <li>Параметры разгона и торможения (0-20)</li>
+                        <li>Частота для каждой форсунки (0-250 Гц настраивается на вкладке SET)</li>
+                        <li>Пауза между циклами (в десятых долях секунды)</li>
+                        <li>Параметры разгона и торможения (0-20 секунд)</li>
                     </ul>
                 </div>
             </div>
@@ -446,7 +486,7 @@
                     <strong>Сохраните программу</strong>, нажав кнопку "СОХРАНИТЬ" данные на вкладке SET
                 </div>
             </div>
-            
+
             <div class="note">
                 <p>В режиме отладки (Debug) можно тестировать программу без сохранения изменений.</p>
             </div>
@@ -459,16 +499,22 @@
                 <img src="screenshots/13_copy_program.jpg" alt="Копирование программы" class="screenshot">
                 <div class="caption">Рис. 13 - Интерфейс копирования программ</div>
             </div>
-            
+
             <h3>Как скопировать программу</h3>
             <div class="step">
                 <div class="step-number">1</div>
+                <div class="step-content">
+                    Включите отображения копирования, активировав переключатель "Копия" в главном меню
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
                 <div class="step-content">
                     <strong>Выберите номер программы</strong> в спинере указав программу источник
                 </div>
             </div>
             <div class="step">
-                <div class="step-number">2</div>
+                <div class="step-number">3</div>
                 <div class="step-content">
                     <strong>Нажмите кнопку COPY</strong> для копирования в текущую программу.
                 </div>
@@ -504,7 +550,7 @@
                     <strong>Нажмите кнопку "Копировать"</strong> для выполнения операции
                 </div>
             </div> -->
-            
+
             <!-- <h3>Дополнительные возможности</h3>
             <table>
                 <tr>
@@ -524,7 +570,7 @@
                     <td>Сохранение часто используемых настроек как шаблонов</td>
                 </tr>
             </table> -->
-            
+
             <div class="warning">
                 <p>При копировании в существующую программу все текущие данные будут перезаписаны!</p>
             </div>
@@ -537,7 +583,7 @@
                 <img src="screenshots/04_control_panel.jpg" alt="Панель управления" class="screenshot">
                 <div class="caption">Рис. 4 - Панель управления системой</div>
             </div>
-            
+
             <h3>Управление насосами</h3>
             <table>
                 <tr>
@@ -561,7 +607,7 @@
                     <td>Позволяет вручную установить частоту для каждой форсунки</td>
                 </tr> -->
             </table>
-            
+
             <h3>Управление реле</h3>
             <table>
                 <tr>
@@ -585,7 +631,7 @@
                     <td>Деактивирует выбранное реле</td>
                 </tr>
             </table>
-            
+
             <h3>Управление клапаном</h3>
             <table>
                 <tr>
@@ -618,7 +664,7 @@
                 <img src="screenshots/05_correction_page.jpg" alt="Страница коррекции" class="screenshot">
                 <div class="caption">Рис. 5 - Интерфейс коррекции параметров</div>
             </div>
-            
+
             <h3>Корректоры частоты</h3>
             <table>
                 <tr>
@@ -642,7 +688,7 @@
                     <td>Плавная остановка насосов</td>
                 </tr> -->
             </table>
-            
+
             <h3>Настройка корректоров</h3>
             <div class="step">
                 <div class="step-number">1</div>
@@ -662,7 +708,7 @@
                     Сохраните изменения кнопкой "СОХРАНИТЬ" данные на вкладке SET
                 </div>
             </div>
-            
+
             <div class="warning">
                 <p>Коррекция влияет на все программы. Изменяйте значения осторожно!</p>
             </div>
@@ -675,7 +721,7 @@
                 <img src="screenshots/06_settings_main.jpg" alt="Основные настройки" class="screenshot">
                 <div class="caption">Рис. 6 - Основные настройки системы</div>
             </div>
-            
+
             <h3>Настройки ЧРП</h3>
             <table>
                 <tr>
@@ -689,7 +735,7 @@
                     <td>Выбор модели частотного преобразователя</td>
                 </tr>
             </table>
-            
+
             <h3>Основные параметры</h3>
             <table>
                 <tr>
@@ -710,7 +756,7 @@
                 <tr>
                     <td>Макс. частота</td>
                     <td>50-250 Гц</td>
-                    <td>150 Гц</td>
+                    <td>60 Гц</td>
                 </tr>
                 <tr>
                     <td>Modbus задержка</td>
@@ -718,7 +764,7 @@
                     <td>50 мс</td>
                 </tr>
             </table>
-            
+
             <h3>Настройки уровнемера</h3>
             <table>
                 <tr>
@@ -756,7 +802,7 @@
                 <img src="screenshots/07_time_settings.jpg" alt="Настройки времени" class="screenshot">
                 <div class="caption">Рис. 7 - Настройки времени работы</div>
             </div>
-            
+
             <h3>Текущее время</h3>
             <table>
                 <tr>
@@ -775,7 +821,7 @@
                     <td>14:30:00</td>
                 </tr>
             </table>
-            
+
             <h3>Расписание работы</h3>
             <table>
                 <tr>
@@ -788,21 +834,26 @@
                     <td>Фонтан</td>
                     <td>08:00</td>
                     <td>22:00</td>
-                    <td>Нет</td>
+                    <td>Есть</td>
                 </tr>
                 <tr>
                     <td>Подсветка</td>
-                    <td>20:00</td>
+                    <td>21:00</td>
                     <td>23:00</td>
-                    <td>Да</td>
+                    <td>Есть</td>
                 </tr>
                 <tr>
                     <td>Музыка</td>
-                    <td>09:00</td>
                     <td>21:00</td>
-                    <td>Нет</td>
+                    <td>21:00</td>
+                    <td>Есть</td>
                 </tr>
             </table>
+
+            <div class="step-content">
+                Настройте время включения/выключения в соответствии с вашими требованиями
+            </div>
+
         </div>
 
         <!-- Подсветка -->
@@ -810,9 +861,9 @@
             <h2>Управление подсветкой</h2>
             <div class="screenshot-container">
                 <img src="screenshots/08_light_control.jpg" alt="Управление подсветкой" class="screenshot">
-                <div class="caption">Рис. 8 - Управление модулями подсветки</div>
+                <div class="caption">Рис. 8 - Страница управления модулями подсветки</div>
             </div>
-            
+
             <h3>Настройка модулей</h3>
             <table>
                 <tr>
@@ -831,7 +882,10 @@
                     <td>Количество реле в каждом модуле</td>
                 </tr>
             </table>
-            
+            <div class="step-content">
+                Укажите количество модулей и количество реле в модуле
+            </div>
+
             <h3>Адреса модулей</h3>
             <table>
                 <tr>
@@ -841,20 +895,26 @@
                 </tr>
                 <tr>
                     <td>Модуль-1</td>
-                    <td>10-247</td>
+                    <td>(последний ЧРП+1) - 247</td>
                     <td>10</td>
                 </tr>
                 <tr>
                     <td>Модуль-2</td>
-                    <td>10-247</td>
+                    <td>(последний ЧРП+2) - 247</td>
                     <td>11</td>
                 </tr>
                 <tr>
                     <td>Модуль-3</td>
-                    <td>10-247</td>
+                    <td>(последний ЧРП+3) - 247</td>
                     <td>12</td>
                 </tr>
             </table>
+            <div class="step-content">
+                Укажите, предварительно установив адреса модулей.
+            </div>
+            <div class="step-content">
+                Спинером установите адрес и нажмите кнопку "Set adres", предварительно подключив один модуль.
+            </div>
         </div>
 
         <!-- Файловая система -->
@@ -864,7 +924,7 @@
                 <img src="screenshots/09_file_manager.jpg" alt="Файловый менеджер" class="screenshot">
                 <div class="caption">Рис. 9 - Файловый менеджер системы</div>
             </div>
-            
+
             <h3>Основные функции</h3>
             <table>
                 <tr>
@@ -893,7 +953,7 @@
                     <td>Администратор</td>
                 </tr>
             </table>
-            
+
             <div class="warning">
                 <p>Загрузка файлов возможна только через веб-браузер!</p>
             </div>
@@ -906,7 +966,7 @@
                 <img src="screenshots/10_wifi_settings.jpg" alt="Настройки Wi-Fi" class="screenshot">
                 <div class="caption">Рис. 10 - Настройки Wi-Fi подключения</div>
             </div>
-            
+
             <h3>Подключение к сети</h3>
             <table>
                 <tr>
@@ -925,7 +985,7 @@
                     <td>SecurePassword123</td>
                 </tr>
             </table>
-            
+
             <h3>Точка доступа</h3>
             <table>
                 <tr>
@@ -938,13 +998,19 @@
                 </tr>
                 <tr>
                     <td>Пароль</td>
-                    <td>Gfgf19081947</td>
+                    <td>********</td>
                 </tr>
                 <tr>
                     <td>IP-адрес</td>
                     <td>192.168.4.1</td>
                 </tr>
             </table>
+            <div class="step-content">
+                Если настроена WIFI сеть то на дисплее высветится IP адрес в локальной сети.
+            </div>
+            <div class="step-content">
+                Если WIFI сеть не настроена то создаться точка доступа 192.168.4.1
+            </div>
         </div>
 
         <!-- О программе -->
@@ -954,7 +1020,7 @@
                 <img src="screenshots/12_about_page.jpg" alt="Страница 'О программе'" class="screenshot">
                 <div class="caption">Рис. 12 - Страница информации о программе</div>
             </div>
-            
+
             <h3>Информация о разработчике</h3>
             <table>
                 <tr>
@@ -982,18 +1048,19 @@
                     <td>Туймазы, Башкортостан</td>
                 </tr>
             </table>s
-            
+
             <h3>Лицензионный ключ</h3>
             <div class="license-box">
                 <p>Для активации полной версии программы введите лицензионный ключ:</p>
                 <div class="license-key">XXXX-XXXX-XXXX-XXXX</div>
                 <p>После ввода ключа нажмите кнопку "Принять" для активации.</p>
-                
+
                 <div class="note">
-                    <p>Лицензионный ключ привязывается к MAC-адресу устройства. При замене оборудования обратитесь в техническую поддержку.</p>
+                    <p>Лицензионный ключ привязан к контроллеру. При замене оборудования обратитесь в
+                        техническую поддержку.</p>
                 </div>
             </div>
-            
+
             <h3>Контактная информация</h3>
             <table>
                 <tr>
@@ -1018,11 +1085,11 @@
         <!-- Решение проблем -->
         <div id="troubleshooting" class="section">
             <h2>Решение проблем</h2>
-            <div class="screenshot-container">
+            <!-- <div class="screenshot-container">
                 <img src="screenshots/11_troubleshooting.jpg" alt="Решение проблем" class="screenshot">
                 <div class="caption">Рис. 11 - Раздел решения проблем</div>
-            </div>
-            
+            </div> -->
+
             <h3>Частые проблемы и решения</h3>
             <table>
                 <tr>
@@ -1051,7 +1118,7 @@
                     <td>Проверьте SSID и пароль, перезагрузите контроллер</td>
                 </tr>
             </table>
-            
+
             <h3>Сброс настроек</h3>
             <div class="step">
                 <div class="step-number">1</div>
@@ -1071,7 +1138,7 @@
                     Для полного сброса нажмите "Перезагрузить"
                 </div>
             </div>
-            
+
             <div class="contact">
                 <h3>Техническая поддержка</h3>
                 <p><strong>Разработчик:</strong> фирма 'Nikel'</p>
@@ -1084,35 +1151,35 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menuToggle');
             const menuClose = document.getElementById('menuClose');
             const sidebar = document.getElementById('sidebar');
-            
+
             // Открытие меню
-            menuToggle.addEventListener('click', function() {
+            menuToggle.addEventListener('click', function () {
                 sidebar.classList.add('active');
             });
-            
+
             // Закрытие меню
-            menuClose.addEventListener('click', function() {
+            menuClose.addEventListener('click', function () {
                 sidebar.classList.remove('active');
             });
-            
+
             // Закрытие меню при клике на ссылку (для мобильных)
             const menuLinks = document.querySelectorAll('.sidebar a');
             menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     if (window.innerWidth <= 768) {
                         sidebar.classList.remove('active');
                     }
                 });
             });
-            
+
             // Закрытие меню при клике вне его области
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 768 && 
-                    !sidebar.contains(event.target) && 
+            document.addEventListener('click', function (event) {
+                if (window.innerWidth <= 768 &&
+                    !sidebar.contains(event.target) &&
                     event.target !== menuToggle) {
                     sidebar.classList.remove('active');
                 }
@@ -1120,4 +1187,5 @@
         });
     </script>
 </body>
+
 </html>
