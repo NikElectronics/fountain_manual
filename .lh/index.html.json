@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1751302080238,
@@ -16,6 +16,10 @@
                 {
                     "date": 1751345565749,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -463,15 +463,15 @@\n             <h3>Как скопировать программу</h3>\r\n             <div class=\"step\">\r\n                 <div class=\"step-number\">1</div>\r\n                 <div class=\"step-content\">\r\n-                    <strong>Выберите исходную программу</strong> из выпадающего списка \"Программа-источник\"\r\n+                    <strong>Выберите номер программы</strong> в спинере указав программу источник\r\n                 </div>\r\n             </div>\r\n             <div class=\"step\">\r\n                 <div class=\"step-number\">2</div>\r\n                 <div class=\"step-content\">\r\n-                    <strong>Укажите целевую программу</strong> в поле \"Программа-приемник\" (от 0 до 49)\r\n+                    <strong>Нажмите кнопку COPY</strong> для копирования в текущую программу.\r\n                 </div>\r\n             </div>\r\n             <div class=\"step\">\r\n                 <div class=\"step-number\">3</div>\r\n"
+                },
+                {
+                    "date": 1751346267362,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -472,9 +472,22 @@\n                 <div class=\"step-content\">\r\n                     <strong>Нажмите кнопку COPY</strong> для копирования в текущую программу.\r\n                 </div>\r\n             </div>\r\n+            <h3>Как скопировать цикл</h3>\r\n             <div class=\"step\">\r\n+                <div class=\"step-number\">1</div>\r\n+                <div class=\"step-content\">\r\n+                    <strong>Выберите номер цикла</strong> в спинере указав цикл источник\r\n+                </div>\r\n+            </div>\r\n+            <div class=\"step\">\r\n+                <div class=\"step-number\">2</div>\r\n+                <div class=\"step-content\">\r\n+                    <strong>Нажмите кнопку COPY</strong> для копирования в текущий цикл.\r\n+                </div>\r\n+            </div>\r\n+            <div class=\"step\">\r\n                 <div class=\"step-number\">3</div>\r\n                 <div class=\"step-content\">\r\n                     <strong>Выберите параметры копирования:</strong>\r\n                     <ul>\r\n"
                 }
             ],
             "date": 1751302080238,
