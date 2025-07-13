@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изображение контроллера - My Fountain</title>
+    <style>
+        :root {
+            --primary-color: #2d2c50;
+            --secondary-color: #34db74;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 12px;
+            margin-top: 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .screenshot-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 15px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .description {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Вернуться к инструкции</a>
+        
+        <h1>Внешний вид контроллера "МОЙ ФОНТАН"</h1>
+        
+        <div class="screenshot-container">
+            <img src="screenshots/controller_image.jpg" alt="Изображение контроллера" class="screenshot">
+            <div class="caption">Рис. 1 - Внешний вид контроллера управления фонтаном</div>
+        </div>
+        
+        <div class="description">
+            <h3>Основные элементы контроллера:</h3>
+            <ol>
+                <li><strong>Дисплей</strong> - отображает текущее состояние системы и меню управления</li>
+                <li><strong>Кнопки навигации</strong> - для перемещения по меню и выбора параметров</li>
+                <li><strong>Разъемы подключения</strong> - для соединения с форсунками, подсветкой и другими устройствами</li>
+                <li><strong>Индикаторы состояния</strong> - отображают текущий режим работы системы</li>
+                <li><strong>Разъем питания</strong> - для подключения к источнику питания 12В</li>
+            </ol>
+        </div>
+    </div>
+</body>
+
+</html>
