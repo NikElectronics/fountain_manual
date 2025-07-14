@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 94,
+            "activePatchIndex": 98,
             "patches": [
                 {
                     "date": 1751302080238,
@@ -384,6 +384,22 @@
                 {
                     "date": 1752466157357,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -383,9 +383,9 @@\n         <!-- Введение -->\r\n         <div id=\"intro\" class=\"section\">\r\n             <h1>Инструкция по управлению контроллером \"МОЙ ФОНТАН\"</h1>\r\n             <div class=\"note\">\r\n-                <p><a href=\"controller.html\" style=\"color: var(--secondary-color); text-decoration: underline;\">Пример построения автоматики</a> и основными узлами.</p>\r\n+                <p><a href=\"controller.html\" style=\"color: var(--secondary-color); text-decoration: underline;\">Пример построения автоматики</a> фонтана.</p>\r\n             </div>\r\n \r\n             <div class=\"feature-grid\">\r\n                 <div class=\"feature-box\">\r\n"
+                },
+                {
+                    "date": 1752468020112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -360,9 +360,9 @@\n     <button class=\"menu-toggle\" id=\"menuToggle\">☰ Меню</button>\r\n \r\n     <div class=\"sidebar\" id=\"sidebar\">\r\n         <button class=\"menu-close\" id=\"menuClose\">✕</button>\r\n-        <h2>Меню инструкции</h2>\r\n+        <!-- <h2>Меню инструкции</h2> -->\r\n         <a href=\"#intro\">Введение</a>\r\n         <!-- <a href=\"controller.html\">Изображение контроллера</a> -->\r\n         <a href=\"#interface\">Интерфейс</a>\r\n         <a href=\"#programming\">Программирование</a>\r\n"
+                },
+                {
+                    "date": 1752468152822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -360,9 +360,9 @@\n     <button class=\"menu-toggle\" id=\"menuToggle\">☰ Меню</button>\r\n \r\n     <div class=\"sidebar\" id=\"sidebar\">\r\n         <button class=\"menu-close\" id=\"menuClose\">✕</button>\r\n-        <!-- <h2>Меню инструкции</h2> -->\r\n+        <h2>Меню</h2>\r\n         <a href=\"#intro\">Введение</a>\r\n         <!-- <a href=\"controller.html\">Изображение контроллера</a> -->\r\n         <a href=\"#interface\">Интерфейс</a>\r\n         <a href=\"#programming\">Программирование</a>\r\n"
+                },
+                {
+                    "date": 1752468214913,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -360,9 +360,9 @@\n     <button class=\"menu-toggle\" id=\"menuToggle\">☰ Меню</button>\r\n \r\n     <div class=\"sidebar\" id=\"sidebar\">\r\n         <button class=\"menu-close\" id=\"menuClose\">✕</button>\r\n-        <h2>Меню</h2>\r\n+        <h1>Меню</h1>\r\n         <a href=\"#intro\">Введение</a>\r\n         <!-- <a href=\"controller.html\">Изображение контроллера</a> -->\r\n         <a href=\"#interface\">Интерфейс</a>\r\n         <a href=\"#programming\">Программирование</a>\r\n"
+                },
+                {
+                    "date": 1752468225219,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -360,9 +360,9 @@\n     <button class=\"menu-toggle\" id=\"menuToggle\">☰ Меню</button>\r\n \r\n     <div class=\"sidebar\" id=\"sidebar\">\r\n         <button class=\"menu-close\" id=\"menuClose\">✕</button>\r\n-        <h1>Меню</h1>\r\n+        <h2>Меню</h2>\r\n         <a href=\"#intro\">Введение</a>\r\n         <!-- <a href=\"controller.html\">Изображение контроллера</a> -->\r\n         <a href=\"#interface\">Интерфейс</a>\r\n         <a href=\"#programming\">Программирование</a>\r\n"
                 }
             ],
             "date": 1751302080238,
