@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> My Fountain</title>
+    <title>Pinout</title>
     <style>
         :root {
             --primary-color: #2d2c50;
@@ -81,25 +81,23 @@
     <div class="container">
         <a href="index.html" class="back-link">← Вернуться к инструкции</a>
         
-        <h1>Пример построения автоматики на базе контроллера "МОЙ ФОНТАН"</h1>
+        <h1>Распиновка контроллера "МОЙ ФОНТАН"</h1>
         
         <div class="screenshot-container">
-            <img src="screenshots/controller_image.jpg" alt="Изображение контроллера" class="screenshot">
-            <div class="caption">Рис. 1 - Пример построения автоматики фонтана</div>
+            <img src="screenshots/pinout.png" alt="Изображение контроллера" class="screenshot">
+            <div class="caption">Рис. 1 - Распиновка и общий вид контроллера</div>
         </div>
         
         <div class="description">
-            <h3>Основные элементы автоматики фонтана:</h3>
+            <h3>Контакты подключения внешних устройств:</h3>
             <ol>
-                <li><strong>Активная колонка</strong> - музыкальное сопровождение программы.</li>
-                <li><strong>Частотные перобразователи</strong> - управление скоростью вращения двигателями насосов</li>
-                <li><strong>Подающие насосы</strong> - насосы подачи воды в форсунки.</li>
-                <li><strong>Анемометр</strong> - контроль скорости ветра.</li>
-                <li><strong>Блок питания</strong> - питание контроллера 12В</li>
-                <li><strong>Уровнемер</strong> - контроль воды в фонтане</li>
-                <li><strong>Клапан долива</strong> - долив воды в фонтан</li>
-                <li><strong>Контактор включения</strong> - включение автоматики фонтана</li>
-                <li><strong>Модули подсветки</strong> - управления прожекторами подсветки форсунок</li>
+                <li><strong>RS485</strong> - контакты для подключения частотных преобразователей и модулей подсветки.</li>
+                <li><strong>Уровнемер</strong> - контакты подключения уровнемера(верхний и нмжний уровень)</li>
+                <li><strong>Анемометр</strong> - контакты подключения датчика ветра.</li>
+                <li><strong>Катушка контактора</strong> - выходы реле для управления контактором включения.</li>
+                <li><strong>Клапан долива</strong> - выходы реле для управления клапаном долива воды</li>
+                <li><strong>Питание</strong> - контакты подключения питания контроллера (НЕ НАРУШАТЬ ПОЛЯРНОСТЬ!)</li>
+                <li><strong>Порт отладки</strong> - порт для отладки в программе "Мой фонтан PC"</li>
             </ol>
         </div>
     </div>

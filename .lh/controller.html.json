@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1752426644449,
@@ -48,6 +48,10 @@
                 {
                     "date": 1752467092019,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -80,9 +80,9 @@\n <body>\r\n     <div class=\"container\">\r\n         <a href=\"index.html\" class=\"back-link\">← Вернуться к инструкции</a>\r\n         \r\n-        <h1>Внешний вид контроллера \"МОЙ ФОНТАН\"</h1>\r\n+        <h1>Пример построения автоматики на базе контроллера \"МОЙ ФОНТАН\"</h1>\r\n         \r\n         <div class=\"screenshot-container\">\r\n             <img src=\"screenshots/controller_image.jpg\" alt=\"Изображение контроллера\" class=\"screenshot\">\r\n             <div class=\"caption\">Рис. 1 - Пример построения автоматики фонтана</div>\r\n"
+                },
+                {
+                    "date": 1752482749532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n <head>\r\n     <meta charset=\"UTF-8\">\r\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n-    <title>Изображение контроллера - My Fountain</title>\r\n+    <title> My Fountain</title>\r\n     <style>\r\n         :root {\r\n             --primary-color: #2d2c50;\r\n             --secondary-color: #34db74;\r\n"
                 }
             ],
             "date": 1752426644449,
