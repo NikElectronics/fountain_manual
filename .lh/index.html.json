@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 152,
+            "activePatchIndex": 153,
             "patches": [
                 {
                     "date": 1751302080238,
@@ -616,6 +616,10 @@
                 {
                     "date": 1753180923191,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1151,9 +1151,9 @@\n                     <td>Башкортостан, г. Туймазы</td>\r\n                 </tr>\r\n             </table>\r\n             <h2><i class=\"fas fa-info-circle\"></i> Другие наши продукты</h2>\r\n-            <li>Устройство диагностики аккумуляторов <a href=\"https://nikelectronics.github.io/fountain_manual/\">neMakita</a></li>\r\n+            <li>Устройство диагностики аккумуляторов <a href=\"https://nikelectronics.github.io/neMakita/\">neMakita</a></li>\r\n         </div>\r\n \r\n         <!-- Решение проблем -->\r\n         <div id=\"troubleshooting\" class=\"section\">\r\n"
+                },
+                {
+                    "date": 1760689271819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1151,9 +1151,9 @@\n                     <td>Башкортостан, г. Туймазы</td>\r\n                 </tr>\r\n             </table>\r\n             <h2><i class=\"fas fa-info-circle\"></i> Другие наши продукты</h2>\r\n-            <li>Устройство диагностики аккумуляторов <a href=\"https://nikelectronics.github.io/neMakita/\">neMakita</a></li>\r\n+            <li>Устройство диагностики аккумуляторов макита <a href=\"https://nikelectronics.github.io/ELIXStoFIX/\">neMakita</a></li>\r\n         </div>\r\n \r\n         <!-- Решение проблем -->\r\n         <div id=\"troubleshooting\" class=\"section\">\r\n"
                 }
             ],
             "date": 1751302080238,
