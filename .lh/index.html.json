@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 164,
+            "activePatchIndex": 165,
             "patches": [
                 {
                     "date": 1751302080238,
@@ -664,6 +664,10 @@
                 {
                     "date": 1763964958979,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1356,9 +1356,9 @@\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n                     <h4>MyDryerBot</h4>\r\n-                    <p>Интеллектуальная сушилка для филамента с PID-регулированием температуры и поддержанием влажности.</p>\r\n+                    <p>Интеллектуальная термокамера с PID-регулированием температуры и поддержанием влажности.</p>\r\n                     <a href=\"https://nikelectronics.github.io/TempBot-1000/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n             </div>\r\n             \r\n"
+                },
+                {
+                    "date": 1763965050285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1355,9 +1355,9 @@\n                     <a href=\"https://nikelectronics.github.io/ELIXStoFIX/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n-                    <h4>MyDryerBot</h4>\r\n+                    <h4>TempBot-1000</h4>\r\n                     <p>Интеллектуальная термокамера с PID-регулированием температуры и поддержанием влажности.</p>\r\n                     <a href=\"https://nikelectronics.github.io/TempBot-1000/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n             </div>\r\n"
                 }
             ],
             "date": 1751302080238,
