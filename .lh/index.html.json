@@ -3,7 +3,11 @@
     "activeCommit": 0,
     "commits": [
         {
+<<<<<<< HEAD
             "activePatchIndex": 170,
+=======
+            "activePatchIndex": 168,
+>>>>>>> 3fef7e89571597814288de79f66920f3dc5dcabe
             "patches": [
                 {
                     "date": 1751302080238,
@@ -670,6 +674,7 @@
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1355,9 +1355,9 @@\n                     <a href=\"https://nikelectronics.github.io/ELIXStoFIX/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n-                    <h4>MyDryerBot</h4>\r\n+                    <h4>TempBot-1000</h4>\r\n                     <p>Интеллектуальная термокамера с PID-регулированием температуры и поддержанием влажности.</p>\r\n                     <a href=\"https://nikelectronics.github.io/TempBot-1000/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n             </div>\r\n"
                 },
                 {
+<<<<<<< HEAD
                     "date": 1776751424953,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -600,8 +600,14 @@\n                     <div class=\"icon\">🔌</div>\r\n                     <h3>Распиновка контроллера</h3>\r\n                     <p>Подробная информация о подключении контактов и разъемов контроллера</p>\r\n                 </a>\r\n+                \r\n+                <a href=\"modbus-innovert.html\" class=\"quick-link-card\" target=\"_blank\">\r\n+                    <div class=\"icon\">🔧</div>\r\n+                    <h3>Modbus Innovert</h3>\r\n+                    <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus</p>\r\n+                </a>\r\n             </div>\r\n \r\n             <div class=\"feature-grid\">\r\n                 <div class=\"feature-box\">\r\n"
                 },
@@ -688,6 +693,18 @@
                 {
                     "date": 1776766927633,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -603,9 +603,9 @@\n                 </a>\r\n                 \r\n                 <a href=\"modbus_innovert.html\" class=\"quick-link-card\">\r\n                     <div class=\"icon\">🔧</div>\r\n-                    <h3>НастройкаModbus</h3>\r\n+                    <h3>Настройка Modbus</h3>\r\n                     <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus</p>\r\n                 </a>\r\n             </div>\r\n \r\n"
+=======
+                    "date": 1767166012263,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1343,10 +1343,10 @@\n             <p>Мы разрабатываем различные решения для автоматизации, электроники и 3D-печати:</p>\r\n             \r\n             <div class=\"products-grid\">\r\n                 <div class=\"product-card\">\r\n-                    <h4>Мой фонтан</h4>\r\n-                    <p>Контроллер управления фонтаном с музыкальным сопровождением, поддержкой до 32 форсунок и автоматическим расписанием работы.</p>\r\n+                    <h4>BedLeveling</h4>\r\n+                    <p>Система анализа кривизны стола 3D принтера.</p>\r\n                     <a href=\"#\" class=\"product-link\">Текущий продукт</a>\r\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n"
+                },
+                {
+                    "date": 1767166027121,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1345,9 +1345,9 @@\n             <div class=\"products-grid\">\r\n                 <div class=\"product-card\">\r\n                     <h4>BedLeveling</h4>\r\n                     <p>Система анализа кривизны стола 3D принтера.</p>\r\n-                    <a href=\"#\" class=\"product-link\">Текущий продукт</a>\r\n+                    <a href=\"https://nikelectronics.github.io/ELIXStoFIX/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n                     <h4>ЭлИксToFIX</h4>\r\n"
+                },
+                {
+                    "date": 1767166068087,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1345,9 +1345,9 @@\n             <div class=\"products-grid\">\r\n                 <div class=\"product-card\">\r\n                     <h4>BedLeveling</h4>\r\n                     <p>Система анализа кривизны стола 3D принтера.</p>\r\n-                    <a href=\"https://nikelectronics.github.io/ELIXStoFIX/\" class=\"product-link\">Подробнее</a>\r\n+                    <a href=\"https://nikelectronics.github.io/BedLeveling/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n                     <h4>ЭлИксToFIX</h4>\r\n"
+>>>>>>> 3fef7e89571597814288de79f66920f3dc5dcabe
                 }
             ],
             "date": 1751302080238,
