@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>INNOVERT ISD222M21E | Настройка управления по Modbus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0B2B3F;
+            --secondary-color: #1f6e8c;
+            --accent-color: #ffb347;
+            --light-gray: #e9eff5;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e9eff5 0%, #dce3ec 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 0;
+            color: #1a2634;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1380px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 25px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            padding: 0 20px 15px;
+            margin: 0 0 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #e0e0e0;
+            padding: 12px 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 28px;
+        }
+
+        .sidebar a.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .sidebar .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 15px 25px;
+        }
+
+        .menu-toggle {
+            display: flex;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-close {
+            display: flex;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1001;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .content-wrapper {
+            margin-left: 0;
+            padding: 80px 20px 20px;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar.active ~ .content-wrapper {
+            margin-left: 0;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        /* header section */
+        .hero {
+            background: linear-gradient(135deg, #0B2B3F 0%, #123e54 100%);
+            border-radius: 2rem;
+            padding: 2rem 2rem 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "⚡";
+            font-size: 220px;
+            opacity: 0.08;
+            position: absolute;
+            right: -30px;
+            bottom: -60px;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 i {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 60px;
+            font-size: 1.8rem;
+        }
+
+        .badge {
+            background: #ffb347;
+            color: #1e2a36;
+            padding: 0.25rem 0.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 75%;
+            margin-top: 0.6rem;
+        }
+
+        /* cards grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.6rem;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+            background: white;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.3rem;
+            border-bottom: 2px solid #eef2f8;
+            padding-bottom: 0.8rem;
+        }
+
+        .card-header i {
+            font-size: 1.8rem;
+            color: #1f6e8c;
+            background: #e6f4f1;
+            padding: 10px;
+            border-radius: 18px;
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f3b4f;
+        }
+
+        .term-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .term-table td {
+            padding: 12px 6px;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        .term-table td:first-child {
+            font-weight: 700;
+            width: 38%;
+            color: #1e5a6f;
+        }
+
+        .term-table td:last-child {
+            color: #2c3e44;
+        }
+
+        .highlight {
+            background: #fef7e0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+
+        .reg-address {
+            background: #eef2ff;
+            font-family: monospace;
+            font-weight: 600;
+            color: #004e7c;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .step-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .step-list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            background: #1f6e8c;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .warning {
+            background: #fff3e0;
+            border-left: 5px solid #f5a623;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+        }
+
+        /* регистры таблица */
+        .reg-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffffdd;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .reg-table th {
+            background: #e0edf2;
+            text-align: left;
+            padding: 12px 10px;
+            font-weight: 600;
+            color: #0b3b47;
+        }
+
+        .reg-table td {
+            padding: 10px 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .code-block {
+            background: #1e2a32;
+            color: #e4f0fb;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .flex-icons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.8rem;
+        }
+
+        .connector {
+            background: #f0f4fa;
+            border-radius: 20px;
+            padding: 0.4rem 0.9rem;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.75rem;
+            color: #4a5b6b;
+        }
+
+        @media (max-width: 700px) {
+            .content-wrapper {
+                padding: 70px 15px 15px;
+            }
+            .hero p {
+                max-width: 100%;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                flex-direction: row;
+            }
+
+            .sidebar {
+                transform: translateX(0);
+                position: fixed;
+            }
+
+            .content-wrapper {
+                margin-left: 280px;
+                padding: 40px;
+                width: calc(100% - 280px);
+            }
+
+            .menu-toggle,
+            .menu-close,
+            .overlay {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle">
+        <span>☰</span>
+        <span>Меню</span>
+    </button>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+        <button class="menu-close" id="menuClose">
+            <span>✕</span>
+            <span>Закрыть</span>
+        </button>
+        <h2>Тип ЧРП</h2>
+        <a href="#innovert" class="vfd-link active" data-vfd="innovert">
+            <i class="fas fa-microchip"></i> INNOVERT ISD222M21E
+        </a>
+        <a href="#zuked" class="vfd-link" data-vfd="zuked">
+            <i class="fas fa-cog"></i> Zuked ZD300 <span style="background: #ffb347; color: #1e2a36; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; margin-left: 8px;">в разработке</span>
+        </a>
+        <div class="divider"></div>
+        <a href="index.html">
+            <i class="fas fa-home"></i> На главную
+        </a>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="hero">
+                <h1>
+                    <i class="fas fa-microchip"></i> 
+                    <span id="vfd-title">INNOVERT ISD222M21E</span>
+                    <span class="badge">Modbus RTU</span>
+                </h1>
+                <p id="vfd-description">Пошаговая настройка управления частотным преобразователем по протоколу Modbus RTU. <br> Пуск/стоп, задание частоты и мониторинг через RS-485.</p>
+            </div>
+
+    <div class="grid-2">
+        <!-- Левый блок: Параметры управления и сеть -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-sliders-h"></i>
+                <h2>Ключевые параметры</h2>
+            </div>
+            <table class="term-table">
+                <tr><td>Pb02 — Источник команд</td><td><span class="highlight">2</span> (RS-485 / Modbus RTU)</td></tr>
+                <tr><td>Pb01 — Задание частоты</td><td><span class="highlight">5</span> (RS-485 / Modbus)</td></tr>
+            </table>
+            <div class="warning">
+                <i class="fas fa-info-circle" style="margin-right: 8px;"></i> <strong>Важно</strong>: Параметры Pb01 и Pb02 должны быть изменены ДО начала обмена. После изменения сохраните параметры (автоматически при выходе из меню).
+            </div>
+        </div>
+
+        <!-- Правый блок: настройки связи -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-network-wired"></i>
+                <h2>Сеть RS-485</h2>
+            </div>
+            <table class="term-table">
+                <tr><td>PH00 (Скорость)</td><td><span class="highlight">1 → 9600 бод</span> (рекомендовано)</td></tr>
+                <tr><td>PH01 (Формат данных)</td><td><span class="highlight">3 → 8-N-1</span> (8 бит, без четности, 1 стоп-бит)</td></tr>
+                <tr><td>PH02 (Адрес Slave)</td><td><span class="highlight">1…247</span> (уникальный ID, например 1)</td></tr>
+            </table>
+            <div class="flex-icons">
+                <span class="connector"><i class="fas fa-plug"></i> RS+ (A) → Data+</span>
+                <span class="connector"><i class="fas fa-plug"></i> RS- (B) → Data-</span>
+                <span class="connector"><i class="fas fa-grip-lines"></i> GND → общий провод</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- пошаговая инструкция настройки панели ПЧ + программирование -->
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-tasks"></i>
+                <h2>Настройка с панели</h2>
+            </div>
+            <ul class="step-list">
+                <li><span class="step-num">1</span> Включите ПЧ. Нажмите <strong>MODE</strong> до входа в меню параметров.</li>
+                <li><span class="step-num">2</span> Кнопками ▲/▼ выберите группу <strong>Pb</strong> → нажмите ENTER.</li>
+                <li><span class="step-num">3</span> Найдите <strong>Pb02</strong> → ENTER → установите <strong>2</strong> → ENTER (источник команд — Modbus).</li>
+                <li><span class="step-num">4</span> Найдите <strong>Pb01</strong> → ENTER → установите <strong>5</strong> → ENTER (задание частоты — Modbus).</li>
+                <li><span class="step-num">5</span> Выйдите в группу <strong>PH</strong> (или Pd) и задайте PH00=1 (9600), PH01=3 (8N1), PH02=1 (ваш ID).</li>
+                <li><span class="step-num">6</span> Нажмите MODE несколько раз для возврата в основной режим. <i class="fas fa-check-circle" style="color:#2b8c5e;"></i> Готово!</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- дополнительные рекомендации и подключение -->
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-cable-car"></i>
+            <h2>Физическое подключение RS-485 и советы</h2>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+            <div style="flex:1; min-width: 200px;">
+                <h3 style="font-size: 1rem; margin-bottom: 8px;"><i class="fas fa-terminal"></i> Клеммы ПЧ</h3>
+                <ul style="margin-left: 1.2rem; line-height: 1.6;">
+                    <li><strong>RS+</strong> → A (Data+) ведущего</li>
+                    <li><strong>RS-</strong> → B (Data-) ведущего</li>
+                    <li><strong>GND</strong> → соединить с GND контроллера</li>
+                </ul>
+            </div>
+            <div style="flex:2">
+                <h3 style="font-size: 1rem; margin-bottom: 8px;"><i class="fas fa-lightbulb"></i> Рекомендации</h3>
+                <ul style="margin-left: 1.2rem; line-height: 1.6;">
+                    <li>Используйте экранированную витую пару (например, Belden 9841).</li>
+                    <li>Подключайте терминальное сопротивление 120 Ом на крайних устройствах сети.</li>
+                    <li>При отсутствии ответа проверьте настройки PH00, PH01 и адрес. Подключите GND — часто решает проблему "таймаута".</li>
+                    <li>Не опрашивайте ПЧ чаще 50 мс – соблюдайте межкадровую паузу.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- краткий чек-лист в виде footer -->
+    <div style="background: #ffffffcc; border-radius: 2rem; padding: 1.2rem; margin-top: 1.5rem; border: 1px solid #cbdbe0;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+            <div><i class="fas fa-check-circle" style="color:#2c7a4a;"></i> <strong>Чек-лист перед запуском по Modbus</strong>:
+                <span style="margin-left: 0.5rem;">✔ Pb02=2</span> <span style="margin-left: 1rem;">✔ Pb01=5</span> <span style="margin-left: 1rem;">✔ PH00=1 (9600)</span>
+                <span style="margin-left: 1rem;">✔ PH01=3 (8-N-1)</span> <span style="margin-left: 1rem;">✔ уникальный ID (PH02)</span>
+            </div>
+            <div><i class="fas fa-book-open"></i> <a href="#" style="text-decoration: none; color:#1f6e8c; font-weight: 500;">Скачать карту регистров PDF (гипотетически)</a></div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="far fa-copyright"></i> <span id="vfd-footer">Инструкция для INNOVERT ISD222M21E (серия ISD mini PLUS). Убедитесь, что версия прошивки поддерживает Modbus RTU.</span> <br>
+        Все данные основаны на официальной документации. При возникновении ошибок связи проверьте общий провод GND и оконечные резисторы.
+    </footer>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const menuClose = document.getElementById('menuClose');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+
+            function toggleMenu() {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+            menuClose.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+
+            const menuLinks = document.querySelectorAll('.sidebar a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 1024) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // VFD selection
+            const vfdLinks = document.querySelectorAll('.vfd-link');
+            const vfdTitle = document.getElementById('vfd-title');
+            const vfdDescription = document.getElementById('vfd-description');
+            const vfdFooter = document.getElementById('vfd-footer');
+
+            const vfdData = {
+                innovert: {
+                    title: 'INNOVERT ISD222M21E',
+                    description: 'Пошаговая настройка управления частотным преобразователем по протоколу Modbus RTU. <br> Пуск/стоп, задание частоты и мониторинг через RS-485.',
+                    footer: 'Инструкция для INNOVERT ISD222M21E (серия ISD mini PLUS). Убедитесь, что версия прошивки поддерживает Modbus RTU.'
+                },
+                zuked: {
+                    title: 'Zuked ZD300',
+                    description: 'Настройка частотного преобразователя Zuked ZD300 для работы по Modbus RTU. <br> Управление через RS-485, параметры и регистры.',
+                    footer: 'Инструкция для Zuked ZD300. Проверьте совместимость версии прошивки с протоколом Modbus RTU.'
+                }
+            };
+
+            vfdLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    vfdLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const vfdType = this.getAttribute('data-vfd');
+                    if (vfdData[vfdType]) {
+                        vfdTitle.textContent = vfdData[vfdType].title;
+                        vfdDescription.innerHTML = vfdData[vfdType].description;
+                        vfdFooter.textContent = vfdData[vfdType].footer;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

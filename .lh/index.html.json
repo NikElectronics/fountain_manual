@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 165,
+            "activePatchIndex": 170,
             "patches": [
                 {
                     "date": 1751302080238,
@@ -668,6 +668,26 @@
                 {
                     "date": 1763965050285,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1355,9 +1355,9 @@\n                     <a href=\"https://nikelectronics.github.io/ELIXStoFIX/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n-                    <h4>MyDryerBot</h4>\r\n+                    <h4>TempBot-1000</h4>\r\n                     <p>Интеллектуальная термокамера с PID-регулированием температуры и поддержанием влажности.</p>\r\n                     <a href=\"https://nikelectronics.github.io/TempBot-1000/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1776751424953,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -600,8 +600,14 @@\n                     <div class=\"icon\">🔌</div>\r\n                     <h3>Распиновка контроллера</h3>\r\n                     <p>Подробная информация о подключении контактов и разъемов контроллера</p>\r\n                 </a>\r\n+                \r\n+                <a href=\"modbus-innovert.html\" class=\"quick-link-card\" target=\"_blank\">\r\n+                    <div class=\"icon\">🔧</div>\r\n+                    <h3>Modbus Innovert</h3>\r\n+                    <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus</p>\r\n+                </a>\r\n             </div>\r\n \r\n             <div class=\"feature-grid\">\r\n                 <div class=\"feature-box\">\r\n"
+                },
+                {
+                    "date": 1776751465301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -601,9 +601,9 @@\n                     <h3>Распиновка контроллера</h3>\r\n                     <p>Подробная информация о подключении контактов и разъемов контроллера</p>\r\n                 </a>\r\n                 \r\n-                <a href=\"modbus-innovert.html\" class=\"quick-link-card\" target=\"_blank\">\r\n+                <a href=\"modbus-innovert.html\" class=\"quick-link-card\">\r\n                     <div class=\"icon\">🔧</div>\r\n                     <h3>Modbus Innovert</h3>\r\n                     <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus</p>\r\n                 </a>\r\n"
+                },
+                {
+                    "date": 1776751554670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -603,9 +603,9 @@\n                 </a>\r\n                 \r\n                 <a href=\"modbus-innovert.html\" class=\"quick-link-card\">\r\n                     <div class=\"icon\">🔧</div>\r\n-                    <h3>Modbus Innovert</h3>\r\n+                    <h3>НастройкаModbus</h3>\r\n                     <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus</p>\r\n                 </a>\r\n             </div>\r\n \r\n"
+                },
+                {
+                    "date": 1776751599185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -601,9 +601,9 @@\n                     <h3>Распиновка контроллера</h3>\r\n                     <p>Подробная информация о подключении контактов и разъемов контроллера</p>\r\n                 </a>\r\n                 \r\n-                <a href=\"modbus-innovert.html\" class=\"quick-link-card\">\r\n+                <a href=\"modbus_innovert.html\" class=\"quick-link-card\">\r\n                     <div class=\"icon\">🔧</div>\r\n                     <h3>НастройкаModbus</h3>\r\n                     <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus</p>\r\n                 </a>\r\n"
+                },
+                {
+                    "date": 1776766927633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -603,9 +603,9 @@\n                 </a>\r\n                 \r\n                 <a href=\"modbus_innovert.html\" class=\"quick-link-card\">\r\n                     <div class=\"icon\">🔧</div>\r\n-                    <h3>НастройкаModbus</h3>\r\n+                    <h3>Настройка Modbus</h3>\r\n                     <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus</p>\r\n                 </a>\r\n             </div>\r\n \r\n"
                 }
             ],
             "date": 1751302080238,
