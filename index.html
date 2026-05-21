@@ -3,16 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>My Fountain - Управление фонтаном</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2d2c50;
-            --secondary-color: #34db74;
-            --accent-color: #e74c3c;
-            --light-gray: #f5f7fa;
+            --primary-color: #0B2B3F;
+            --secondary-color: #1f6e8c;
+            --accent-color: #ffb347;
+            --light-gray: #e9eff5;
             --medium-gray: #e0e0e0;
-            --dark-gray: #333;
             --white: #ffffff;
         }
 
@@ -21,24 +24,24 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             line-height: 1.6;
-            color: var(--dark-gray);
-            background-color: var(--light-gray);
+            color: #1a2634;
+            background: linear-gradient(145deg, #e9eff5 0%, #dce3ec 100%);
             min-height: 100vh;
         }
 
         .sidebar {
             width: 280px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #54b68a 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: var(--white);
             padding: 25px 0;
             position: fixed;
-            height: 100%;
+            height: 100vh;
             overflow-y: auto;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             z-index: 100;
@@ -72,7 +75,7 @@
         .sidebar a:hover {
             background: rgba(255, 255, 255, 0.05);
             color: var(--white);
-            border-left: 3px solid var(--secondary-color);
+            border-left: 3px solid var(--accent-color);
             padding-left: 28px;
         }
 
@@ -90,33 +93,52 @@
             transition: margin-left 0.3s ease;
         }
 
-        .sidebar.active ~ .content {
+        .sidebar.active~.content {
             margin-left: 0;
         }
 
         h1 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 12px;
+            color: var(--white);
             margin-top: 0;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        h1 i {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 60px;
+            font-size: 1.8rem;
         }
 
         h2 {
-            color: var(--primary-color);
+            color: #0f3b4f;
             margin-top: 40px;
             padding-bottom: 8px;
-            border-bottom: 1px solid var(--medium-gray);
+            border-bottom: 2px solid #eef2f8;
             font-weight: 600;
             font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: #1f6e8c;
+            background: #e6f4f1;
+            padding: 8px;
+            border-radius: 14px;
         }
 
         h3 {
             color: var(--secondary-color);
             margin-top: 25px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 1.2rem;
         }
 
@@ -129,45 +151,60 @@
 
         .section {
             margin-bottom: 30px;
-            background: var(--white);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(2px);
+            padding: 1.5rem 1.6rem;
+            border-radius: 1.8rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+            background: white;
         }
 
         .note {
-            background-color: #e7f4ff;
-            border-left: 4px solid var(--secondary-color);
+            background-color: #e6f4f1;
+            border-left: 5px solid var(--secondary-color);
             padding: 15px;
             margin: 20px 0;
-            border-radius: 0 6px 6px 0;
+            border-radius: 0 1rem 1rem 0;
             font-size: 0.95rem;
         }
 
         .warning {
-            background-color: #fff8e6;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
+            background-color: #fff3e0;
+            border-left: 5px solid #f5a623;
+            padding: 0.8rem 1rem;
             margin: 20px 0;
-            border-radius: 0 6px 6px 0;
-            font-size: 0.95rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
         }
 
         .screenshot-container {
             text-align: center;
-            margin: 20px 0;
-            padding: 12px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            border: 1px solid var(--medium-gray);
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .screenshot-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
         }
 
         .screenshot {
             max-width: 100%;
             height: auto;
-            border: 1px solid var(--medium-gray);
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .caption {
@@ -185,11 +222,18 @@
         }
 
         .feature-box {
-            background: var(--white);
-            padding: 15px;
-            border-radius: 8px;
+            background: #f8fafc;
+            padding: 1.2rem;
+            border-radius: 1rem;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            border-left: 3px solid var(--secondary-color);
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.2s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateX(5px);
+            background: #eef2f7;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .feature-box h4 {
@@ -197,7 +241,8 @@
             color: var(--primary-color);
         }
 
-        ul, ol {
+        ul,
+        ol {
             padding-left: 20px;
         }
 
@@ -218,11 +263,11 @@
         }
 
         th {
-            background-color: var(--primary-color);
-            color: var(--white);
+            background-color: #e0edf2;
+            color: #0b3b47;
             padding: 12px 8px;
             text-align: left;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
         }
 
@@ -236,10 +281,32 @@
             background-color: #f9f9f9;
         }
 
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #0B2B3F 0%, #123e54 100%);
+            border-radius: 2rem;
+            padding: 2rem 2rem 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "⚡";
+            font-size: 220px;
+            opacity: 0.08;
+            position: absolute;
+            right: -30px;
+            bottom: -60px;
+            pointer-events: none;
+        }
+
         .contact {
-            background-color: #f5f5f5;
+            background-color: #f8fafc;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 1rem;
             margin-top: 30px;
             border-left: 4px solid var(--secondary-color);
         }
@@ -253,8 +320,8 @@
         .step-number {
             background: var(--secondary-color);
             color: var(--white);
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -262,7 +329,7 @@
             margin-right: 12px;
             flex-shrink: 0;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .step-content {
@@ -279,11 +346,18 @@
         }
 
         .product-card {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 8px;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             border-left: 4px solid var(--secondary-color);
+            transition: all 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+            background: white;
         }
 
         .product-card h4 {
@@ -325,18 +399,18 @@
         }
 
         .quick-link-card {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #54b68a 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: var(--white);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 1.2rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
         }
 
         .quick-link-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
         }
 
         .quick-link-card h3 {
@@ -370,7 +444,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(52, 219, 116, 0.3);
+            box-shadow: 0 2px 8px rgba(31, 110, 140, 0.3);
             margin: 10px 0 0 0;
             border: 2px solid transparent;
             font-size: 0.95rem;
@@ -379,7 +453,7 @@
 
         .email-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(52, 219, 116, 0.5);
+            box-shadow: 0 4px 15px rgba(31, 110, 140, 0.5);
             background: linear-gradient(135deg, #2ecc71 0%, var(--secondary-color) 100%);
         }
 
@@ -413,7 +487,7 @@
             top: 15px;
             right: 15px;
             z-index: 1001;
-            background: var(--accent-color);
+            background: #e74c3c;
             color: white;
             border: none;
             border-radius: 8px;
@@ -564,30 +638,72 @@
             <span>Закрыть</span>
         </button>
         <h2>Меню</h2>
-        <a href="#intro">Введение</a>
-        <a href="#interface">Интерфейс</a>
-        <a href="#programming">Программирование</a>
-        <a href="#copying">Копирование программ</a>
-        <a href="#control">Управление</a>
-        <a href="#correction">Коррекция</a>
-        <a href="#settings">Настройки</a>
-        <a href="#time">Время работы</a>
-        <a href="#light">Подсветка</a>
-        <a href="#music">Настройки музыки</a>
-        <a href="#files">Файловая система</a>
-        <a href="#wifi">Wi-Fi</a>
-        <a href="#about">О программе</a>
-        <a href="#products">Наши продукты</a>
+        <a href="#intro">
+            <i class="fas fa-info-circle"></i> Введение
+        </a>
+        <a href="#interface">
+            <i class="fas fa-desktop"></i> Интерфейс
+        </a>
+        <a href="#programming">
+            <i class="fas fa-code"></i> Программирование
+        </a>
+        <a href="#correction">
+            <i class="fas fa-wrench"></i> Коррекция
+        </a>
+        <a href="#music">
+            <i class="fas fa-music"></i> Настройки музыки
+        </a>
+        <a href="#copying">
+            <i class="fas fa-copy"></i> Копирование программ
+        </a>
+        <a href="#control">
+            <i class="fas fa-sliders-h"></i> Управление
+        </a>
+        <a href="#settings">
+            <i class="fas fa-cog"></i> Настройки
+        </a>
+        <a href="#time">
+            <i class="fas fa-clock"></i> Время работы
+        </a>
+        <a href="#light">
+            <i class="fas fa-lightbulb"></i> Подсветка
+        </a>
+        <a href="#rgb-light">
+            <i class="fas fa-palette"></i> Подсветка RGB
+        </a>
+        <a href="#files">
+            <i class="fas fa-folder"></i> Файловая система
+        </a>
+        <a href="#wifi">
+            <i class="fas fa-wifi"></i> Wi-Fi
+        </a>
+        <a href="#about">
+            <i class="fas fa-info"></i> О программе
+        </a>
+        <a href="#products">
+            <i class="fas fa-box-open"></i> Наши продукты
+        </a>
         <div class="divider"></div>
-        <a href="#troubleshooting">Решение проблем</a>
-        <a href="mailto:nikelectronics78@gmail.com">Техподдержка</a>
+        <a href="#troubleshooting">
+            <i class="fas fa-life-ring"></i> Решение проблем
+        </a>
+        <a href="mailto:nikelectronics78@gmail.com">
+            <i class="fas fa-envelope"></i> Техподдержка
+        </a>
     </div>
 
     <div class="content">
         <!-- Введение -->
         <div id="intro" class="section">
-            <h1>Контроллер управления фонтаном с музыкальным сопровождением "МОЙ ФОНТАН"</h1>
-            
+            <div class="hero">
+                <h1>
+                    <i class="fas fa-fountain"></i>
+                    Контроллер управления фонтаном
+                </h1>
+                <p style="font-size: 1rem; opacity: 0.85; max-width: 75%; margin-top: 0.6rem;">Система управления
+                    фонтаном с музыкальным сопровождением "МОЙ ФОНТАН"</p>
+            </div>
+
             <!-- Красивые ссылки -->
             <div class="quick-links">
                 <a href="controller.html" class="quick-link-card">
@@ -595,17 +711,18 @@
                     <h3>Пример построения автоматики фонтана</h3>
                     <p>Схемы подключения и примеры построения системы управления фонтаном</p>
                 </a>
-                
+
                 <a href="pinout.html" class="quick-link-card">
                     <div class="icon">🔌</div>
                     <h3>Распиновка контроллера</h3>
                     <p>Подробная информация о подключении контактов и разъемов контроллера</p>
                 </a>
-                
+
                 <a href="modbus_innovert.html" class="quick-link-card">
                     <div class="icon">🔧</div>
                     <h3>Настройка Modbus</h3>
-                    <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus</p>
+                    <p>Документация и инструменты для работы с частотными преобразователями Innovert по протоколу Modbus
+                    </p>
                 </a>
             </div>
 
@@ -633,7 +750,7 @@
 
         <!-- Интерфейс -->
         <div id="interface" class="section">
-            <h2>WEB интерфейс программы</h2>
+            <h2><i class="fas fa-desktop"></i> WEB интерфейс программы</h2>
             <div class="screenshot-container">
                 <img src="screenshots/02_interface_overview.jpg" alt="Обзор интерфейса" class="screenshot">
                 <div class="caption">Рис. 2 - Обзор интерфейса программы</div>
@@ -666,9 +783,11 @@
 
         <!-- Программирование -->
         <div id="programming" class="section">
-            <h2>Программирование фонтана</h2>
+            <h2><i class="fas fa-code"></i> Программирование фонтана</h2>
             <div class="screenshot-container">
-                <img src="screenshots/03_programming_page.jpg" alt="Страница программирования" class="screenshot">
+                <img src="screenshots/03_programming_page.png" alt="Страница программирования" class="screenshot">
+                <img src="screenshots/set_prog.png" alt="Страница программирования" class="screenshot">
+                <img src="screenshots/music.png" alt="Страница программирования" class="screenshot">
                 <div class="caption">Рис. 3 - Страница программирования фонтана</div>
             </div>
 
@@ -676,7 +795,8 @@
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                    <strong>Выберите номер программы</strong> (от 0 до 49) укажите количество циклов и повторов (от 1 до 32)
+                    <strong>Выберите номер программы</strong> (от 0 до 49) укажите количество циклов и повторов (от 1 до
+                    32)
                 </div>
             </div>
             <div class="step">
@@ -704,15 +824,140 @@
             </div>
 
             <div class="note">
-                <p>В режиме отладки (Debug) можно тестировать программу без сохранения изменений.</p>
+                <p>В режиме "Тест" можно тестировать текущую программу.</p>
+            </div>
+        </div>
+
+        <!-- Коррекция -->
+        <div id="correction" class="section">
+            <h2><i class="fas fa-wrench"></i> Коррекция частоты форсунок</h2>
+            <div class="screenshot-container">
+                <img src="screenshots/05_correction_page.jpg" alt="Страница коррекции" class="screenshot">
+                <div class="caption">Рис. 5 - Интерфейс коррекции параметров</div>
+            </div>
+
+            <h3>Корректоры частоты</h3>
+            <table>
+                <tr>
+                    <th>Параметр</th>
+                    <th>Диапазон</th>
+                    <th>Назначение</th>
+                </tr>
+                <tr>
+                    <td>Корректор форсунки</td>
+                    <td>0-40 Гц</td>
+                    <td>Компенсация разницы в производительности форсунок</td>
+                </tr>
+            </table>
+
+            <h3>Настройка корректоров</h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    Включите отображение корректоров, активировав переключатель "Корректоры" в главном меню
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    Для каждой форсунки установите значение корректора с помощью соответствующего слайдера
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    Сохраните изменения кнопкой "СОХРАНИТЬ" данные на вкладке SET
+                </div>
+            </div>
+
+            <div class="warning">
+                <p>Коррекция влияет на все программы. Изменяйте значения осторожно!</p>
+            </div>
+        </div>
+
+        <!-- Настройки музыки -->
+        <div id="music" class="section">
+            <h2><i class="fas fa-music"></i> Настройки музыкального сопровождения</h2>
+            <div class="screenshot-container">
+                <img src="screenshots/music.png" alt="Настройки музыки" class="screenshot">
+                <div class="caption">Рис. 8a - Настройки музыкального сопровождения</div>
+            </div>
+
+            <h3>Основные параметры</h3>
+            <table>
+                <tr>
+                    <th>Параметр</th>
+                    <th>Диапазон</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td>Количество треков</td>
+                    <td>0-99</td>
+                    <td>Общее количество доступных музыкальных композиций</td>
+                </tr>
+                <tr>
+                    <td>Громкость</td>
+                    <td>0-100%</td>
+                    <td>Уровень громкости воспроизведения</td>
+                </tr>
+                <tr>
+                    <td>Режим воспроизведения</td>
+                    <td>Случайно, По программе</td>
+                    <td>Способ выбора музыкальных композиций</td>
+                </tr>
+            </table>
+
+            <h3>Настройка для программы</h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <strong>Загрузите музыкальные треки</strong> на sd карту установленную в контроллере с помощью
+                    картридера.
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <strong>Включите отображение музыки</strong>, активировав переключатель "Музыка" в главном меню
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <strong>Укажите номер трека для текущей программы</strong> (random-случайный, flow-от предыдущей
+                    программы)
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <strong>Подберите паузы, разгон и торможение ЧП</strong> (под музыку)
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <strong>Выберите реакцию плейера при повторах</strong> (Рестарт-перезапуск композиции,
+                    Продолжить-продолжение воспроизведения)
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <strong>Сохраните изменения</strong> кнопкой "СОХРАНИТЬ"
+                </div>
+            </div>
+
+            <div class="note">
+                <p>Номера музыкальных файлов соответствую порядку размещения треков на sd карте.</p>
             </div>
         </div>
 
         <!-- Копирование программ -->
         <div id="copying" class="section">
-            <h2>Копирование программ</h2>
+            <h2><i class="fas fa-copy"></i> Копирование программ</h2>
             <div class="screenshot-container">
-                <img src="screenshots/13_copy_program.jpg" alt="Копирование программы" class="screenshot">
+                <img src="screenshots/copy.png" alt="Копирование программы" class="screenshot">
                 <div class="caption">Рис. 13 - Интерфейс копирования программ</div>
             </div>
 
@@ -757,7 +1002,7 @@
 
         <!-- Управление -->
         <div id="control" class="section">
-            <h2>Управление системой</h2>
+            <h2><i class="fas fa-sliders-h"></i> Управление системой</h2>
             <div class="screenshot-container">
                 <img src="screenshots/04_control_panel.jpg" alt="Панель управления" class="screenshot">
                 <div class="caption">Рис. 4 - Панель управления системой</div>
@@ -831,56 +1076,9 @@
             </table>
         </div>
 
-        <!-- Коррекция -->
-        <div id="correction" class="section">
-            <h2>Коррекция частоты форсунок</h2>
-            <div class="screenshot-container">
-                <img src="screenshots/05_correction_page.jpg" alt="Страница коррекции" class="screenshot">
-                <div class="caption">Рис. 5 - Интерфейс коррекции параметров</div>
-            </div>
-
-            <h3>Корректоры частоты</h3>
-            <table>
-                <tr>
-                    <th>Параметр</th>
-                    <th>Диапазон</th>
-                    <th>Назначение</th>
-                </tr>
-                <tr>
-                    <td>Корректор форсунки</td>
-                    <td>0-40 Гц</td>
-                    <td>Компенсация разницы в производительности форсунок</td>
-                </tr>
-            </table>
-
-            <h3>Настройка корректоров</h3>
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    Включите отображение корректоров, активировав переключатель "Корректоры" в главном меню
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    Для каждой форсунки установите значение корректора с помощью соответствующего слайдера
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    Сохраните изменения кнопкой "СОХРАНИТЬ" данные на вкладке SET
-                </div>
-            </div>
-
-            <div class="warning">
-                <p>Коррекция влияет на все программы. Изменяйте значения осторожно!</p>
-            </div>
-        </div>
-
         <!-- Настройки -->
         <div id="settings" class="section">
-            <h2>Основные настройки</h2>
+            <h2><i class="fas fa-cog"></i> Основные настройки</h2>
             <div class="screenshot-container">
                 <img src="screenshots/06_settings_main.jpg" alt="Основные настройки" class="screenshot">
                 <div class="caption">Рис. 6 - Основные настройки системы</div>
@@ -1003,7 +1201,7 @@
 
         <!-- Время работы -->
         <div id="time" class="section">
-            <h2>Настройки времени работы</h2>
+            <h2><i class="fas fa-clock"></i> Настройки времени работы</h2>
             <div class="screenshot-container">
                 <img src="screenshots/07_time_settings.jpg" alt="Настройки времени" class="screenshot">
                 <div class="caption">Рис. 7 - Настройки времени работы</div>
@@ -1063,7 +1261,7 @@
 
         <!-- Подсветка -->
         <div id="light" class="section">
-            <h2>Управление подсветкой</h2>
+            <h2><i class="fas fa-lightbulb"></i> Управление подсветкой</h2>
             <div class="screenshot-container">
                 <img src="screenshots/08_light_control.jpg" alt="Управление подсветкой" class="screenshot">
                 <div class="caption">Рис. 8 - Страница управления модулями подсветки</div>
@@ -1117,84 +1315,85 @@
             </div>
         </div>
 
-        <!-- Настройки музыки -->
-        <div id="music" class="section">
-            <h2>Настройки музыкального сопровождения</h2>
+        <!-- Подсветка RGB -->
+        <div id="rgb-light" class="section">
+            <h2><i class="fas fa-palette"></i> Управление подсветкой RGB</h2>
             <div class="screenshot-container">
-                <img src="screenshots/08a_music_settings.jpg" alt="Настройки музыки" class="screenshot">
-                <div class="caption">Рис. 8a - Настройки музыкального сопровождения</div>
+                <img src="screenshots/RGB_set.png" alt="Управление подсветкой RGB" class="screenshot">
+                <div class="caption">Рис. 8b - Страница настройки RGB подсветкой</div>
+            </div>
+            <div class="screenshot-container">
+                <img src="screenshots/rgb_set_color.png" alt="Управление подсветкой RGB" class="screenshot">
+                <div class="caption">Рис. 8с - Управление RGB подсветкой</div>
             </div>
 
-            <h3>Основные параметры</h3>
+            <h3>Настройка RGB модулей</h3>
             <table>
                 <tr>
-                    <th>Параметр</th>
-                    <th>Диапазон</th>
+                    <th>Цвет</th>
                     <th>Описание</th>
                 </tr>
                 <tr>
-                    <td>Количество треков</td>
-                    <td>0-99</td>
-                    <td>Общее количество доступных музыкальных композиций</td>
+                    <td>R (Red)</td>
+                    <td>Красный канал - выберите, если используется в светильнике</td>
                 </tr>
                 <tr>
-                    <td>Громкость</td>
-                    <td>0-100%</td>
-                    <td>Уровень громкости воспроизведения</td>
+                    <td>G (Green)</td>
+                    <td>Зеленый канал - выберите, если используется в светильнике</td>
                 </tr>
                 <tr>
-                    <td>Режим воспроизведения</td>
-                    <td>Случайно, По программе</td>
-                    <td>Способ выбора музыкальных композиций</td>
+                    <td>B (Blue)</td>
+                    <td>Синий канал - выберите, если используется в светильнике</td>
+                </tr>
+                <tr>
+                    <td>W (White)</td>
+                    <td>Белый канал - выберите, если используется в светильнике</td>
                 </tr>
             </table>
 
-            <h3>Настройка для программы</h3>
+            <div class="note">
+                <p>Отметьте только те цвета, которые физически присутствуют в ваших RGB светильниках. Это обеспечит корректную работу управления подсветкой.</p>
+            </div>
+
+            <h3>Настройка цветов</h3>
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                    <strong>Загрузите музыкальные треки</strong> на sd карту установленную в контроллере с помощью картридера.
+                    <strong>Выберите режим работы RGB подсветки</strong> из списка доступных режимов
                 </div>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                    <strong>Включите отображение музыки</strong>, активировав переключатель "Музыка" в главном меню
+                    <strong>Установите базовый цвет</strong> с помощью палитры цветов или введите RGB значения
                 </div>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                    <strong>Укажите номер трека для текущей программы</strong> (random-случайный, flow-от предыдущей программы)
+                    <strong>Настройте яркость и скорость</strong> в соответствии с вашими предпочтениями
                 </div>
             </div>
             <div class="step">
                 <div class="step-number">4</div>
-                <div class="step-content">
-                    <strong>Подберите паузы, разгон и торможение ЧП</strong> (под музыку)
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">5</div>
-                <div class="step-content">
-                    <strong>Выберите реакцию плейера при повторах</strong> (Рестарт-перезапуск композиции, Продолжить-продолжение воспроизведения)
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">6</div>
                 <div class="step-content">
                     <strong>Сохраните изменения</strong> кнопкой "СОХРАНИТЬ"
                 </div>
             </div>
 
             <div class="note">
-                <p>Номера музыкальных файлов соответствую порядку размещения треков на sd карте.</p>
+                <p>RGB подсветка работает независимо от основной подсветки и может быть синхронизирована с программой
+                    фонтана.</p>
+            </div>
+
+            <div class="warning">
+                <p>При использовании музыкального режима убедитесь, что музыкальное сопровождение включено.</p>
             </div>
         </div>
 
         <!-- Файловая система -->
         <div id="files" class="section">
-            <h2>Файловая система</h2>
+            <h2><i class="fas fa-folder"></i> Файловая система</h2>
             <div class="screenshot-container">
                 <img src="screenshots/09_file_manager.jpg" alt="Файловый менеджер" class="screenshot">
                 <div class="caption">Рис. 9 - Файловый менеджер системы</div>
@@ -1236,7 +1435,7 @@
 
         <!-- Wi-Fi -->
         <div id="wifi" class="section">
-            <h2>Настройка Wi-Fi подключения</h2>
+            <h2><i class="fas fa-wifi"></i> Настройка Wi-Fi подключения</h2>
             <div class="screenshot-container">
                 <img src="screenshots/10_wifi_settings.jpg" alt="Настройки Wi-Fi" class="screenshot">
                 <div class="caption">Рис. 10 - Настройки Wi-Fi подключения</div>
@@ -1282,13 +1481,14 @@
             </table>
 
             <div class="note">
-                <p>Если настроена WIFI сеть то на дисплее высветится IP адрес в локальной сети. Если WIFI сеть не настроена то создаться точка доступа 192.168.4.1</p>
+                <p>Если настроена WIFI сеть то на дисплее высветится IP адрес в локальной сети. Если WIFI сеть не
+                    настроена то создаться точка доступа 192.168.4.1</p>
             </div>
         </div>
 
         <!-- О программе -->
         <div id="about" class="section">
-            <h2>О программе</h2>
+            <h2><i class="fas fa-info"></i> О программе</h2>
             <div class="screenshot-container">
                 <img src="screenshots/12_about_page.jpg" alt="Страница 'О программе'" class="screenshot">
                 <div class="caption">Рис. 12 - Страница информации о программе</div>
@@ -1345,29 +1545,30 @@
 
         <!-- Наши продукты -->
         <div id="products" class="section">
-            <h2>Наши продукты</h2>
+            <h2><i class="fas fa-box-open"></i> Наши продукты</h2>
             <p>Мы разрабатываем различные решения для автоматизации, электроники и 3D-печати:</p>
-            
+
             <div class="products-grid">
                 <div class="product-card">
                     <h4>BedLeveling</h4>
                     <p>Система анализа кривизны стола 3D принтера.</p>
                     <a href="https://nikelectronics.github.io/BedLeveling/" class="product-link">Подробнее</a>
                 </div>
-                
+
                 <div class="product-card">
                     <h4>ЭлИксToFIX</h4>
-                    <p>Диагностический модуль для аккумуляторов Makita с функцией сброса ошибок и чтения данных через WEB-интерфейс.</p>
+                    <p>Диагностический модуль для аккумуляторов Makita с функцией сброса ошибок и чтения данных через
+                        WEB-интерфейс.</p>
                     <a href="https://nikelectronics.github.io/ELIXStoFIX/" class="product-link">Подробнее</a>
                 </div>
-                
+
                 <div class="product-card">
                     <h4>TempBot-1000</h4>
                     <p>Интеллектуальная термокамера с PID-регулированием температуры и поддержанием влажности.</p>
                     <a href="https://nikelectronics.github.io/TempBot-1000/" class="product-link">Подробнее</a>
                 </div>
             </div>
-            
+
             <div class="note">
                 <p><strong>Техническая поддержка:</strong> По всем вопросам обращайтесь по email:</p>
                 <a href="mailto:nikelectronics78@gmail.com" class="email-link">
@@ -1379,7 +1580,7 @@
 
         <!-- Решение проблем -->
         <div id="troubleshooting" class="section">
-            <h2>Решение проблем</h2>
+            <h2><i class="fas fa-life-ring"></i> Решение проблем</h2>
 
             <h3>Проблемы и решения</h3>
             <table>
@@ -1416,7 +1617,9 @@
             </table>
 
             <div class="warning">
-                <p>Задержка в миллисекундах между включением форсунок, а так же подсветки, считается нормальной. Так как устройства управляются по интерфейсу RS485. Задержка обсловлена modbus задержкой установленной в основных настройках</p>
+                <p>Задержка в миллисекундах между включением форсунок, а так же подсветки, считается нормальной. Так как
+                    устройства управляются по интерфейсу RS485. Задержка обсловлена modbus задержкой установленной в
+                    основных настройках</p>
             </div>
 
             <h3>Сброс настроек</h3>
@@ -1450,7 +1653,7 @@
                 <p><strong>Разработчик:</strong> фирма 'Nikel'</p>
                 <p><strong>Адрес:</strong> Башкортостан г.Туймазы</p>
                 <p><strong>Телефон:</strong> +79871028263</p>
-                <p><strong>Email:</strong> 
+                <p><strong>Email:</strong>
                     <a href="mailto:nikelectronics78@gmail.com" class="email-link">
                         <span class="email-icon">✉️</span>
                         nikelectronics78@gmail.com
@@ -1482,7 +1685,7 @@
             // Закрытие меню при клике на ссылку
             const menuLinks = document.querySelectorAll('.sidebar a');
             menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     if (window.innerWidth < 1024) {
                         toggleMenu();
                     }
@@ -1509,4 +1712,5 @@
         });
     </script>
 </body>
+
 </html>
