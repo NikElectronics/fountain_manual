@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 9,
+            "activePatchIndex": 10,
             "patches": [
                 {
                     "date": 1781082166615,
@@ -44,6 +44,10 @@
                 {
                     "date": 1781083130135,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -635,9 +635,9 @@\n                     <li>\r\n                         <span class=\"step-num\">5</span>\r\n                         <div>\r\n                             <strong>Запустите процесс обновления</strong><br>\r\n-                            <span style=\"color: #4a5b6b; font-size: 0.95rem;\">Начнётся загрузка и установка прошивки. Не закрывайте браузер и не отключайте питание!</span>\r\n+                            <span style=\"color: #4a5b6b; font-size: 0.95rem;\">Выбрав файл начнётся загрузка и установка прошивки. Не закрывайте браузер и не отключайте питание!</span>\r\n                         </div>\r\n                     </li>\r\n                     <li>\r\n                         <span class=\"step-num\">6</span>\r\n"
+                },
+                {
+                    "date": 1781084084785,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -576,9 +576,9 @@\n                 </div>\r\n                 <ul class=\"settings-list\">\r\n                     <li>\r\n                         <strong><i class=\"fas fa-file-archive\" style=\"color: #1f6e8c; margin-right: 8px;\"></i>Файл прошивки</strong>\r\n-                        <span>Скачайте последнюю версию прошивки (<span class=\"highlight\">.bin</span>): <a href=\"Firmware\" style=\"display: inline-flex; align-items: center; gap: 6px; background: #e6f4f1; color: #1f6e8c; font-weight: 600; padding: 4px 14px; border-radius: 20px; text-decoration: none; margin-left: 4px;\"><i class=\"fas fa-download\" style=\"font-size: 0.85rem;\"></i>Скачать прошивку</a></span>\r\n+                        <span>Скачайте последнюю версию прошивки (<span class=\"highlight\">.bin</span>): <a href=\"Firmware/firmware.bin\" style=\"display: inline-flex; align-items: center; gap: 6px; background: #e6f4f1; color: #1f6e8c; font-weight: 600; padding: 4px 14px; border-radius: 20px; text-decoration: none; margin-left: 4px;\"><i class=\"fas fa-download\" style=\"font-size: 0.85rem;\"></i>Скачать прошивку</a></span>\r\n                     </li>\r\n                     <li>\r\n                         <strong><i class=\"fas fa-wifi\" style=\"color: #1f6e8c; margin-right: 8px;\"></i>Подключение к WiFi</strong>\r\n                         <span>Убедитесь, что контроллер подключён к локальной сети <span class=\"highlight\">WiFi 2.4 ГГц</span>. IP-адрес контроллера отображается на экране устройства.</span>\r\n"
                 }
             ],
             "date": 1781082166615,
