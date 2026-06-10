@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1780659709185,
@@ -24,6 +24,14 @@
                 {
                     "date": 1780985431792,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -591,8 +591,12 @@\n                     <li>\r\n                         <strong><i class=\"fas fa-cut\" style=\"color: #1f6e8c; margin-right: 8px;\"></i>Настройка среза (Cut-off)</strong>\r\n                         <span>Срез задаёт порог отключения ЧРП при достижении минимальной рабочей частоты. Установите частоту среза ниже которой ЧРП останавливает двигатель — это предотвращает работу на неэффективных режимах и защищает конденсатор.</span>\r\n                     </li>\r\n+                    <li>\r\n+                        <strong><i class=\"fas fa-unlink\" style=\"color: #1f6e8c; margin-right: 8px;\"></i>Отключение контроля обрыва фаз</strong>\r\n+                        <span>Так как однофазный двигатель подключается только к двум выходным клеммам ЧРП, третья фаза остаётся незадействованной. Обязательно <span class=\"highlight\">отключите контроль обрыва фаз</span> в настройках ЧРП, иначе преобразователь будет выдавать ошибку и блокировать запуск двигателя.</span>\r\n+                    </li>\r\n \r\n                 </ul>\r\n \r\n                 <div class=\"tip\">\r\n"
+                },
+                {
+                    "date": 1781088080808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -620,8 +620,12 @@\n                         <span>После подключения к WiFi, контроллер доступен по IP-адресу через браузер. Управление осуществляется <span class=\"highlight\">только по локальной сети</span>. IP адрес отображается на экране контроллера.</span>\r\n                     </li>\r\n \r\n                 </ul>\r\n+                <div class=\"warning\">\r\n+                    <i class=\"fas fa-exclamation-triangle\" style=\"margin-right: 8px;\"></i> \r\n+                    <strong>Внимание:</strong> Веб-интерфейс обновляется раз в секунду. Частые запросы к контроллеру могут привести к его зависанию. Изменение параметров необходимо производить <span class=\"highlight\">не чаще одного раза в секунду</span>. При появлении сообщения <span class=\"highlight\">Device offline</span> — просто подождите, пока оно исчезнет, и затем продолжите настройку.\r\n+                </div>\r\n             </div>\r\n \r\n             <div class=\"card\">\r\n                 <div class=\"card-header\">\r\n"
+                },
+                {
+                    "date": 1781088354859,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -612,9 +612,9 @@\n                 </div>\r\n                 <ul class=\"settings-list\">\r\n                     <li>\r\n                         <strong><i class=\"fas fa-network-wired\" style=\"color: #1f6e8c; margin-right: 8px;\"></i>Подключение к сети</strong>\r\n-                        <span>В разделе <span class=\"highlight\">WiFi</span> выберите сеть и введите пароль. Поддерживаются сети 2.4 ГГц (802.11 b/g/n).</span>\r\n+                        <span>В разделе <span class=\"highlight\">WiFi</span> выберите сеть <span class=\"highlight\">fontan</span> и введите пароль. Поддерживаются сети 2.4 ГГц (802.11 b/g/n).</span>\r\n                     </li>\r\n                     <li>\r\n                         <strong><i class=\"fas fa-globe\" style=\"color: #1f6e8c; margin-right: 8px;\"></i>Веб-интерфейс</strong>\r\n                         <span>После подключения к WiFi, контроллер доступен по IP-адресу через браузер. Управление осуществляется <span class=\"highlight\">только по локальной сети</span>. IP адрес отображается на экране контроллера.</span>\r\n"
                 }
             ],
             "date": 1780659709185,
