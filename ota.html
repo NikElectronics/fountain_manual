@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Обновление прошивки по OTA - Мой Фонтан</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0B2B3F;
+            --secondary-color: #1f6e8c;
+            --accent-color: #ffb347;
+            --light-gray: #e9eff5;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e9eff5 0%, #dce3ec 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 0;
+            color: #1a2634;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1380px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 25px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            padding: 0 20px 15px;
+            margin: 0 0 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #e0e0e0;
+            padding: 12px 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 28px;
+        }
+
+        .sidebar a.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .sidebar .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 15px 25px;
+        }
+
+        .menu-toggle {
+            display: flex;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-close {
+            display: flex;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1001;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .content-wrapper {
+            margin-left: 0;
+            padding: 80px 20px 20px;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar.active ~ .content-wrapper {
+            margin-left: 0;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0B2B3F 0%, #123e54 100%);
+            border-radius: 2rem;
+            padding: 2rem 2rem 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "📡";
+            font-size: 220px;
+            opacity: 0.08;
+            position: absolute;
+            right: -30px;
+            bottom: -60px;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 i {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 60px;
+            font-size: 1.8rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 75%;
+            margin-top: 0.6rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            background: var(--white);
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.6rem;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.5);
+            margin-bottom: 2rem;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+            background: white;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.3rem;
+            border-bottom: 2px solid #eef2f8;
+            padding-bottom: 0.8rem;
+        }
+
+        .card-header i {
+            font-size: 1.8rem;
+            color: #1f6e8c;
+            background: #e6f4f1;
+            padding: 10px;
+            border-radius: 18px;
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f3b4f;
+        }
+
+        .settings-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .settings-list li {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: #f8fafc;
+            border-radius: 1rem;
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.2s ease;
+        }
+
+        .settings-list li:hover {
+            transform: translateX(5px);
+            background: #eef2f7;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .settings-list strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .settings-list span {
+            color: #4a5b6b;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            background: #fef7e0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+
+        .warning {
+            background: #fff3e0;
+            border-left: 5px solid #f5a623;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+        }
+
+        .tip {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .step-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .step-list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            background: #1f6e8c;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.75rem;
+            color: #4a5b6b;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding: 70px 15px 15px;
+            }
+            
+            .hero {
+                padding: 1.5rem 1.2rem 1.3rem 1.2rem;
+                border-radius: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero::before {
+                font-size: 120px;
+                right: -20px;
+                bottom: -30px;
+            }
+            
+            .hero h1 {
+                font-size: 1.4rem;
+                gap: 8px;
+            }
+            
+            .hero h1 i {
+                padding: 8px;
+                font-size: 1.4rem;
+            }
+            
+            .hero p {
+                max-width: 100%;
+                font-size: 0.9rem;
+            }
+            
+            .card {
+                padding: 1.2rem 1.1rem;
+                border-radius: 1.2rem;
+            }
+            
+            .card-header {
+                margin-bottom: 1rem;
+                padding-bottom: 0.6rem;
+            }
+            
+            .card-header i {
+                font-size: 1.4rem;
+                padding: 8px;
+                border-radius: 14px;
+            }
+            
+            .card-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .menu-toggle {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+            
+            .menu-close {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            
+            .sidebar {
+                width: 260px;
+            }
+            
+            .sidebar h2 {
+                font-size: 1.2rem;
+                padding: 0 15px 12px;
+            }
+            
+            .sidebar a {
+                padding: 11px 20px;
+                font-size: 0.9rem;
+            }
+
+            .step-list li {
+                gap: 10px;
+                margin-bottom: 0.8rem;
+            }
+
+            .step-num {
+                width: 24px;
+                height: 24px;
+                font-size: 0.75rem;
+            }
+
+            .warning, .tip {
+                padding: 0.7rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content-wrapper {
+                padding: 65px 12px 12px;
+            }
+            
+            .hero {
+                padding: 1.2rem 1rem 1.1rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.2rem;
+            }
+            
+            .hero p {
+                font-size: 0.85rem;
+            }
+            
+            .card {
+                padding: 1rem 0.9rem;
+            }
+            
+            .card-header h2 {
+                font-size: 1.1rem;
+            }
+
+            .step-num {
+                width: 22px;
+                height: 22px;
+                font-size: 0.7rem;
+            }
+
+            .warning, .tip {
+                font-size: 0.75rem;
+                padding: 0.6rem 0.7rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                flex-direction: row;
+            }
+
+            .sidebar {
+                transform: translateX(0);
+                position: fixed;
+            }
+
+            .content-wrapper {
+                margin-left: 280px;
+                padding: 40px;
+                width: calc(100% - 280px);
+            }
+
+            .menu-toggle,
+            .menu-close,
+            .overlay {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle">
+        <span>☰</span>
+        <span>Меню</span>
+    </button>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+        <button class="menu-close" id="menuClose">
+            <span>✕</span>
+            <span>Закрыть</span>
+        </button>
+        <h2>Навигация</h2>
+        <a href="index.html">
+            <i class="fas fa-home"></i> На главную
+        </a>
+        <div class="divider"></div>
+        <a href="controller.html">
+            <i class="fas fa-cogs"></i> Автоматика фонтана
+        </a>
+        <a href="pinout.html">
+            <i class="fas fa-plug"></i> Распиновка контроллера
+        </a>
+        <a href="settings.html">
+            <i class="fas fa-lightbulb"></i> Рекомендации по настройке
+        </a>
+        <a href="modbus_innovert.html">
+            <i class="fas fa-microchip"></i> Настройка ЧРП
+        </a>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Вернуться на главную
+            </a>
+
+            <div class="hero">
+                <h1>
+                    <i class="fas fa-cloud-download-alt"></i> 
+                    Обновление прошивки по OTA
+                </h1>
+                <p>Пошаговая инструкция по обновлению прошивки контроллера "МОЙ ФОНТАН" через беспроводной интерфейс OTA (Over-The-Air)</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h2>Подготовка к обновлению</h2>
+                </div>
+                <ul class="settings-list">
+                    <li>
+                        <strong><i class="fas fa-file-archive" style="color: #1f6e8c; margin-right: 8px;"></i>Файл прошивки</strong>
+                        <span>Скачайте последнюю версию прошивки (<span class="highlight">.bin</span>): <a href="Firmware" style="display: inline-flex; align-items: center; gap: 6px; background: #e6f4f1; color: #1f6e8c; font-weight: 600; padding: 4px 14px; border-radius: 20px; text-decoration: none; margin-left: 4px;"><i class="fas fa-download" style="font-size: 0.85rem;"></i>Скачать прошивку</a></span>
+                    </li>
+                    <li>
+                        <strong><i class="fas fa-wifi" style="color: #1f6e8c; margin-right: 8px;"></i>Подключение к WiFi</strong>
+                        <span>Убедитесь, что контроллер подключён к локальной сети <span class="highlight">WiFi 2.4 ГГц</span>. IP-адрес контроллера отображается на экране устройства.</span>
+                    </li>
+                    <li>
+                        <strong><i class="fas fa-plug" style="color: #1f6e8c; margin-right: 8px;"></i>Стабильное питание</strong>
+                        <span>Убедитесь, что питание контроллера стабильное. <span class="highlight">Не отключайте питание</span> во время обновления — это может привести к повреждению устройства.</span>
+                    </li>
+                </ul>
+                <div class="warning">
+                    <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i> 
+                    <strong>Внимание:</strong> Перед обновлением рекомендуется сделать резервную копию настроек через раздел <span class="highlight">File</span> в веб-интерфейсе контроллера.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-tasks"></i>
+                    <h2>Пошаговая инструкция обновления</h2>
+                </div>
+                <div class="warning" style="background: #ffebee; border-left: 5px solid #d32f2f; padding: 1rem 1.2rem; margin-bottom: 1.5rem;">
+                    <i class="fas fa-exclamation-triangle" style="color: #d32f2f; margin-right: 8px; font-size: 1.1rem;"></i> 
+                    <strong style="color: #d32f2f;">ВНИМАНИЕ!</strong> <span style="color: #c62828;">Обновление прошивки необходимо выполнять через обычный браузер (Chrome, Firefox, Edge). <strong>Не используйте captive portal</strong> (встроенный браузер, который автоматически открывается при подключении к WiFi сети).</span>
+                </div>
+                <ul class="step-list">
+                    <li>
+                        <span class="step-num">1</span>
+                        <div>
+                            <strong>Откройте веб-интерфейс контроллера</strong><br>
+                            <span style="color: #4a5b6b; font-size: 0.95rem;">Введите IP-адрес контроллера в адресной строке браузера. IP-адрес отображается на экране устройства в разделе <span class="highlight">WiFi</span>.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num">2</span>
+                        <div>
+                            <strong>Перейдите в закладку File</strong><br>
+                            <span style="color: #4a5b6b; font-size: 0.95rem;">В разделе ОБНОВЛЕНИЕ нажмите иконку 🔄.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num">3</span>
+                        <div>
+                            <strong>Авторизация</strong><br>
+                            <span style="color: #4a5b6b; font-size: 0.95rem;">Введите логин и пароль для доступа к функции обновления прошивки.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num">4</span>
+                        <div>
+                            <strong>Выберите файл прошивки</strong><br>
+                            <span style="color: #4a5b6b; font-size: 0.95rem;">В открывшемся файловом менеджере укажите скачанный файл прошивки с расширением <span class="highlight">.bin</span> на вашем устройстве.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num">5</span>
+                        <div>
+                            <strong>Запустите процесс обновления</strong><br>
+                            <span style="color: #4a5b6b; font-size: 0.95rem;">Выбрав файл начнётся загрузка и установка прошивки. Не закрывайте браузер и не отключайте питание!</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num">6</span>
+                        <div>
+                            <strong>Дождитесь завершения</strong><br>
+                            <span style="color: #4a5b6b; font-size: 0.95rem;">Процесс обновления занимает от 30 секунд до 2 минут. После завершения контроллер автоматически перезагрузится. <i class="fas fa-check-circle" style="color:#2b8c5e;"></i> Готово!</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h2>Возможные проблемы и решения</h2>
+                </div>
+                <ul class="settings-list">
+                    <li>
+                        <strong><i class="fas fa-times-circle" style="color: #d32f2f; margin-right: 8px;"></i>Ошибка загрузки файла</strong>
+                        <span>Убедитесь, что файл прошивки имеет расширение <span class="highlight">.bin</span> и не повреждён. Повторите скачивание файла.</span>
+                    </li>
+                    <li>
+                        <strong><i class="fas fa-wifi" style="color: #d32f2f; margin-right: 8px;"></i>Потеря соединения во время обновления</strong>
+                        <span>Проверьте стабильность WiFi сигнала. Подойдите ближе к роутеру. Если обновление не завершено, подождите 2–3 минуты — контроллер может восстановиться самостоятельно.</span>
+                    </li>
+                    <li>
+                        <strong><i class="fas fa-power-off" style="color: #d32f2f; margin-right: 8px;"></i>Контроллер не отвечает после обновления</strong>
+                        <span>Выполните перезагрузку по питанию (выключите и включите контроллер). Если проблема сохраняется, обратитесь к разработчику для восстановления через USB.</span>
+                    </li>
+                </ul>
+                <div class="tip">
+                    <i class="fas fa-lightbulb" style="margin-right: 8px;"></i> 
+                    <strong>Рекомендация:</strong> После успешного обновления проверьте версию прошивки в разделе «О контроллере» и убедитесь, что все настройки сохранены. При необходимости восстановите настройки из резервной копии.
+                </div>
+            </div>
+
+            <footer>
+                <i class="far fa-copyright"></i> 2025 My Fountain. Все права защищены.
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const menuClose = document.getElementById('menuClose');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+
+            function toggleMenu() {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+            menuClose.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+
+            const menuLinks = document.querySelectorAll('.sidebar a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 1024) {
+                        toggleMenu();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
