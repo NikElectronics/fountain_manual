@@ -79,23 +79,6 @@
 
 ---
 
-## 🖼️ Интерфейс
-
-<div align="center">
-
-| | |
-|:---:|:---:|
-| ![Главный интерфейс](screenshots/01_main_interface.png) | ![Обзор интерфейса](screenshots/02_interface_overview.jpg) |
-| *Главный интерфейс* | *Обзор вкладок* |
-| ![Программирование](screenshots/03_programming_page.png) | ![Управление](screenshots/04_control_panel.jpg) |
-| *Страница программирования* | *Панель управления* |
-| ![Настройки](screenshots/06_settings_main.jpg) | ![RGB подсветка](screenshots/RGB_set.png) |
-| *Основные настройки* | *Настройка RGB подсветки* |
-
-</div>
-
----
-
 ## 📑 Разделы документации
 
 <div align="center">
